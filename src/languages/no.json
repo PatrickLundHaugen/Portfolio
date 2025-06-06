@@ -1,0 +1,115 @@
+{
+  "navbar": {
+    "contact": "Kontakt"
+  },
+  "home": {
+    "greeting": "Hei, Patrick her!",
+    "location": "Kløfta, Norge",
+    "about": "Jeg går siste året på bachelor i design ved UiO, og har en stor interesse for front-end utvikling og alt det spennende som følger med!",
+
+    "tabs": {
+      "projects": {
+        "label": "Prosjekter",
+        "1": {
+          "date": "Feb 2024 - Juni 2024",
+          "title": "Software Engineering med prosjektarbeid",
+          "description": "Apputvikling med Teamarbeid",
+          "list": {
+            "item1": "Ledet et team på seks personer ved bruk av Scrum-metodikk",
+            "item2": "Designet komponenter, flowcharts, og sekvensdiagrammer",
+            "item3": "Gjennomførte workshops og brukerundersøkelser"
+          }
+        },
+        "2": {
+          "date": "Feb 2023 - Juni 2023",
+          "title": "Bruksorientert design",
+          "description": "Utvikling av digital prototype i samarbeid med en spesifikk brukergruppe",
+          "list": {
+            "item1": "Ansvarlig for utvikling og vedlikehold av prosjektets hjemmeside",
+            "item2": "Presenterte prototyper for brukere og innhentet verdifull innsikt for å forbedre produktutviklingen"
+          }
+        },
+        "3": {
+          "date": "Juni 2024",
+          "title": "Image Generator",
+          "description": "Utvikler",
+          "list": {
+            "item1": "Utviklet en responsiv nettside som tilpasser seg forskjellige skjermstørrelser",
+            "item2": "Brukte Unsplash API til å hente bilder for visuelle elementer i prosjektet"
+          }
+        }
+      },
+
+      "education": {
+        "label": "Utdanning",
+        "1": {
+          "date": "Aug 2022 - Juni 2025",
+          "title": "Bachelor i Design, bruk, interaksjon",
+          "description": "Institutt for informatikk ved Universitetet i Oslo",
+          "list": {
+            "item1": "Bruksorientert design",
+            "item2": "Software Engineering",
+            "item3": "Informasjonssikkerhet"
+          },
+          "project-link": "1. Års Prosjekt"
+        },
+        "2": {
+          "date": "Aug 2019 - Juni 2022",
+          "title": "Studiespesialisering",
+          "description": "Hoppensprett Akademiet VGS",
+          "list": {
+            "item1": "Informasjonsteknologi",
+            "item2": "2. plass i Horisont hos Norges Bank"
+          }
+        }
+      }
+    }
+  },
+
+  "recent-projects": {
+    "title": "Tidligere prosjekter",
+    "back": "Gå tilbake",
+    "dashboard": {
+      "title": "Dashboard",
+      "date": "Februar 2025 - Nå",
+      "description": "Samling av praktiske funksjoner på ett sted, med fleksibel layout og lokal lagring.",
+      "text": {
+        "section1": {
+          "text1": "Dashboard er et prosjekt jeg har drevet på med litt av og på de siste månedene, og fungerer som et personlig kontrollpanel som samler nyttige funksjoner på ett sted. Tanken var å utvikle ett verktøy som var nyttig i hverdagen min, istedenfor et teknisk prosjekt jeg ikke ville bruke. Foreløpig har jeg implementert en rekke funksjoner, blant annet en chat-funksjon integrert med Gemini, et system for bokmerker, og en enkel notisblokk."
+        },
+        "section2": {
+          "title": "Det tekniske",
+          "text1": "Så mye av det tekniske var jeg allerede kjent med. Jeg brukte Tailwind og shadcn/ui som jeg allerede har brukt i tidligere prosjekter og derfor forblir det samme. Som nevnt over, integrerte jeg Gemini. Det var en ganske straightforward prosess, ettersom API-et fungerer ganske likt mange andre. Jeg valgte Gemini fremfor ChatGPT, hovedsakelig fordi det er gratis,og kan i mange tilfeller være et bedre alternativ.",
+          "text2": "En annen viktig (men lite synlig) del av prosjektet er den fleksible layouten. Her har jeg brukt dnd-kit, et bibliotek for drag-&-drop-funksjonalitet, som lar brukeren flytte og tilpasse kortene på siden slik de selv vil, både i størrelse og plassering.",
+          "text3": "Når det gjelder datalagring, har jeg foreløpig valgt å bruke localStorage. Det er enkelt og fungerer greit nok slik at brukerens data blir lagret mellom økter. En database ville selvsagt gitt mer robust lagring, men for dette stadiet i prosjektet holder det i massevis. Dette er uansett noe jeg kan bygge videre på senere, hvis det er behov."
+        },
+        "section3": {
+          "text1": "Jeg har satt utviklingen på pause foreløpig grunnet andre forpliktelser, men planen er absolutt å fortsette å jobbe med Dashboard jevnlig. Det finnes uendelige muligheter for utvikling, både små forbedringer og større utvidelser.",
+          "text2": "Kanskje jeg publiserer den etter hvert, vi får se :)"
+        }
+      }
+    },
+
+    "image-generator": {
+      "title": "Image Generator",
+      "date": "Juni 2024",
+      "description": "Søk etter bilder ved hjelp av nøkkelord, og få vist et galleri med treff hentet fra Unsplash sitt API.",
+      "text": {
+        "section1": {
+          "text1": "Dette var mitt aller første prosjekt i React! I tillegg til å lære React og Typescript fra bunnen av, tok jeg også i bruk både Tailwind og shadcn/ui for første gang.",
+          "text2": "Jeg integrerte også mitt første API, så det ble mye nytt på en gang. Heldigvis hadde jeg allerede en del erfaring fra tidligere småprosjekter hvor jeg brukte vanlig HTML, CSS, og JavaScript, så overgangen føltes ikke så overveldende som den kanskje kunne gjort. Selv om det var en litt bratt læringskurve, var det veldig gøy å se hvordan ting begynte å henge sammen, alt fra komponentstruktur og styling ved datahenting og dynamisk innhold.",
+          "text3": "Prosjektet ble en fin introduksjon til nye moderne verktøy, og hvordan utvikling kan være både mer effektiv og mer morsom. Og så klart ga det meg masse motivasjon til å utforske videre!"
+        },
+        "section2": {
+          "title": "Så hvordan funker det?",
+          "text1": "Det er ikke noe fancy greier her, men det funker og det ser bra ut. Jeg koblet til Unsplash sitt API (ja, det er stock photos), og bruker det til å hente inn så mange bilder jeg ønsker samtidig. Det første bildet virker som et Hero image, mens resten ruller nedover i ett galleri som aldri tar slutt. Jepp, det er endless scrolling, ja det er TikTok. Det er et enkelt konsept, men det ser ganske kult ut."
+        },
+        "section3": {
+          "title": "Veien videre",
+          "text1": "Hele prosjektet ble unnagjort på cirka en uke, så det ble mest fokus på å få grunnlaget på plass. I etterkant har jeg grubla over hvordan jeg kunne bygget videre på det, kanskje ved å involvere mer interaktivitet, avansert logikk, eller utforsket nye konseper jeg har lært siden. Men som oftest, har andre prosjekter og forpliktelser kommet i veien.",
+          "text2": "Likevel ser jeg verdien i det jeg erfarte. Koden kan nok føles litt utdatert, både visuelt og teknisk, da jeg ville gjort mye annerledes nå. Jeg ser potensiale i å plukke det opp igjen med friske øyne og nye ferdigheter, skulle motivasjonen være der. Det viktigste er det solide grunnlaget som prosjektet ga meg slik at jeg kan bygge videre på det, særlig da det ble veien min inn til moderne og effektiv webutvikling."
+        }
+      }
+    }
+  }
+}

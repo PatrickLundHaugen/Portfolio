@@ -1,0 +1,115 @@
+{
+  "navbar": {
+    "contact": "Contact"
+  },
+  "home": {
+    "greeting": "Hi, I'm Patrick!",
+    "location": "Kløfta, Norway",
+    "about": "I'm in my final year of a Bachelor's in Design at UiO, with a strong interest in front-end development and everything exciting that comes with it.",
+
+    "tabs": {
+      "projects": {
+        "label": "Projects",
+        "1": {
+          "date": "Feb 2024 - June 2024",
+          "title": "Software Engineering with Project Work",
+          "description": "App development with team collaboration",
+          "list": {
+            "item1": "Led a team of six using Scrum methodology",
+            "item2": "Designed components, flowcharts, and sequence diagrams",
+            "item3": "Conducted workshops and user research"
+          }
+        },
+        "2": {
+          "date": "Feb 2023 - June 2023",
+          "title": "Use Oriented Design",
+          "description": "Development of a digital prototype in collaboration with a specific user group",
+          "list": {
+            "item1": "Responsible for developing and maintaining the project website",
+            "item2": "Presented prototypes to users and gathered valuable insights to improve product development"
+          }
+        },
+        "3": {
+          "date": "June 2024",
+          "title": "Image Generator",
+          "description": "Developer",
+          "list": {
+            "item1": "Developed a responsive website that adapts to various screen sizes",
+            "item2": "Used the Unsplash API to fetch images for visual elements in the project"
+          }
+        }
+      },
+
+      "education": {
+        "label": "education",
+        "1": {
+          "date": "Aug 2022 - June 2025",
+          "title": "Bachelor in Design, use, interaction",
+          "description": "Department of Informatics, University of Oslo",
+          "list": {
+            "item1": "Use Oriented Design",
+            "item2": "Software Engineering",
+            "item3": "Information Security"
+          },
+          "project-link": "1st Year Project"
+        },
+        "2": {
+          "date": "Aug 2019 - June 2022",
+          "title": "Specialization in General Studies",
+          "description": "Hoppensprett Akademiet Upper Secondary School",
+          "list": {
+            "item1": "Information technology",
+            "item2": "2nd place in Horisont competition hosted by Norges Bank"
+          }
+        }
+      }
+    }
+  },
+
+  "recent-projects": {
+    "title": "Previous projects",
+    "back": "Go back",
+    "dashboard": {
+      "title": "Dashboard",
+      "date": "February 2025 - Present",
+      "description": "A collection of practical features in one place, with a flexible layout and local storage.",
+      "text": {
+        "section1": {
+          "text1": "Dashboard is a project I’ve been working on intermittently over the past few months. It functions as a personal control panel that brings together useful tools in one place. The idea was to create something genuinely helpful for my daily life, rather than just a technical showcase I wouldn’t end up using. So far, I’ve implemented several features, including a chat tool integrated with Gemini, a bookmarking system, and a simple notepad."
+        },
+        "section2": {
+          "title": "The Technical",
+          "text1": "Most of the technical parts were familiar territory. I used Tailwind and shadcn/ui, which I’ve worked with in earlier projects, so that stayed consistent. As mentioned above, I integrated Gemini. That was a fairly straightforward process, since the API works similarly to many others. I chose Gemini over ChatGPT mainly because it’s free and, in many cases, a better option.",
+          "text2": "Another important (but less visible) part of the project is the flexible layout. I used `dnd-kit`, a library for drag-and-drop functionality, which lets users rearrange and resize the cards on the page however they like.",
+          "text3": "For data storage, I’ve currently opted for `localStorage`. It’s simple and works well enough to keep user data between sessions. A database would of course provide more robust storage, but for this stage of the project, `localStorage` is more than sufficient. That’s something I could build on later if the need arises."
+        },
+        "section3": {
+          "text1": "I've paused development for now due to other commitments, but I absolutely plan to keep working on Dashboard regularly. There are endless possibilities for improvements, both small tweaks and larger additions.",
+          "text2": "Maybe I’ll publish it eventually, we’ll see :)"
+        }
+      }
+    },
+
+    "image-generator": {
+      "title": "Image Generator",
+      "date": "June 2024",
+      "description": "Search for images using keywords and view a gallery of results fetched from the Unsplash API.",
+      "text": {
+        "section1": {
+          "text1": "This was my very first React project! In addition to learning React and TypeScript from scratch, I also used Tailwind and shadcn/ui for the first time.",
+          "text2": "It was also the first time I integrated an API, so it was a lot of new stuff at once. Luckily, I already had some experience from earlier small projects using plain HTML, CSS, and JavaScript, so the transition wasn’t as overwhelming as it could have been. Even though the learning curve was steep, it was super fun to see how things started to come together—from component structure and styling to data fetching and dynamic content.",
+          "text3": "The project turned out to be a great introduction to modern tools and how development can be both more efficient and more enjoyable. And of course, it gave me tons of motivation to keep exploring!"
+        },
+        "section2": {
+          "title": "So How Does It Work?",
+          "text1": "Nothing fancy here, but it works and it looks good. I connected to the Unsplash API (yep, stock photos) and used it to fetch as many images as I wanted. The first image shows as a hero image, while the rest appear in a gallery that scrolls endlessly. Yep—endless scrolling, just like TikTok. It’s a simple concept, but it looks pretty cool."
+        },
+        "section3": {
+          "title": "What’s Next?",
+          "text1": "The whole project was done in about a week, so the focus was mainly on getting the foundation in place. Afterwards, I started thinking about ways to expand it—maybe by adding more interactivity, advanced logic, or exploring some new concepts I’ve learned since. But as usual, other projects and obligations got in the way.",
+          "text2": "Still, I really value what I learned from the experience. The code might feel a bit outdated now—both visually and technically—as there are many things I’d do differently today. I definitely see the potential to revisit it with fresh eyes and improved skills if the motivation strikes. The most important part is that it gave me a solid foundation for diving into modern, efficient web development."
+        }
+      }
+    }
+  }
+}
