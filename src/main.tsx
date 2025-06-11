@@ -28,7 +28,7 @@ i18n.on('languageChanged', (lng) => {
 createRoot(document.getElementById("root")!).render(
     <StrictMode>
         <BrowserRouter>
-            <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
+            <ThemeProvider defaultTheme="light" storageKey="color-theme">
                 <App />
             </ThemeProvider>
         </BrowserRouter>

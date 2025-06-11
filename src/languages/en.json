@@ -1,6 +1,25 @@
 {
   "navbar": {
-    "contact": "Contact"
+    "contact": {
+      "title": "Contact",
+      "description": "Send me a message!",
+      "form": {
+        "input1": {
+          "label": "Name",
+          "placeholder": "Patrick"
+        },
+        "input2": {
+          "label": "Email",
+          "placeholder": "pat@example.com"
+        },
+        "input3": {
+          "label": "Message",
+          "placeholder": "How are you?"
+        }
+      },
+      "button1": "Cancel",
+      "button2": "Send"
+    }
   },
   "home": {
     "greeting": "Hi, I'm Patrick!",

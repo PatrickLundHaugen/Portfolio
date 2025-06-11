@@ -1,6 +1,25 @@
 {
   "navbar": {
-    "contact": "Kontakt"
+    "contact": {
+      "title": "Kontakt",
+      "description": "Send meg en melding!",
+      "form": {
+        "input1": {
+          "label": "Navn",
+          "placeholder": "Patrick"
+        },
+        "input2": {
+          "label": "Email",
+          "placeholder": "pat@example.com"
+        },
+        "input3": {
+          "label": "Melding",
+          "placeholder": "Hvordan går det?"
+        }
+      },
+      "button1": "Avbryt",
+      "button2": "Send"
+    }
   },
   "home": {
     "greeting": "Hei, Patrick her!",
