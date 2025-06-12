@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "./home.tsx";
-import Navbar from "./sections/navbar.tsx";
-import Footer from "./sections/footer.tsx";
+import Navbar from "./components/navbar.tsx";
+import Footer from "./components/footer.tsx";
 import Project1 from "./projects/project1.tsx";
 import Project2 from "./projects/project2.tsx";
 

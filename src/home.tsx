@@ -2,8 +2,8 @@ import { IoLocationOutline } from "react-icons/io5";
 import { FaLinkedin } from "react-icons/fa";
 import { IoLogoGithub } from "react-icons/io";
 import { FiMail } from "react-icons/fi";
-import Tabs from "./sections/tabs.tsx";
-import RecentProjects from "./sections/recent-projects.tsx";
+import Tabs from "./components/tabs.tsx";
+import RecentProjects from "./components/recent-projects.tsx";
 import { useTranslation } from "react-i18next";
 
 const Home = () => {

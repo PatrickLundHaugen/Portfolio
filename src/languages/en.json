@@ -18,7 +18,8 @@
         }
       },
       "button1": "Cancel",
-      "button2": "Send"
+      "button2": "Send",
+      "toast": "The message has been sent!"
     }
   },
   "home": {
@@ -116,19 +117,22 @@
       "text": {
         "section1": {
           "text1": "This was my very first React project! In addition to learning React and TypeScript from scratch, I also used Tailwind and shadcn/ui for the first time.",
-          "text2": "It was also the first time I integrated an API, so it was a lot of new stuff at once. Luckily, I already had some experience from earlier small projects using plain HTML, CSS, and JavaScript, so the transition wasn’t as overwhelming as it could have been. Even though the learning curve was steep, it was super fun to see how things started to come together—from component structure and styling to data fetching and dynamic content.",
+          "text2": "It was also the first time I integrated an API, so it was a lot of new stuff at once. Luckily, I already had some experience from earlier small projects using plain HTML, CSS, and JavaScript, so the transition wasn’t as overwhelming as it could have been. Even though the learning curve was steep, it was super fun to see how things started to come together, from component structure and styling to data fetching and dynamic content.",
           "text3": "The project turned out to be a great introduction to modern tools and how development can be both more efficient and more enjoyable. And of course, it gave me tons of motivation to keep exploring!"
         },
         "section2": {
           "title": "So How Does It Work?",
-          "text1": "Nothing fancy here, but it works and it looks good. I connected to the Unsplash API (yep, stock photos) and used it to fetch as many images as I wanted. The first image shows as a hero image, while the rest appear in a gallery that scrolls endlessly. Yep—endless scrolling, just like TikTok. It’s a simple concept, but it looks pretty cool."
+          "text1": "Nothing fancy here, but it works and it looks good. I connected to the Unsplash API (yep, stock photos) and used it to fetch as many images as I wanted. The first image shows as a hero image, while the rest appear in a gallery that scrolls endlessly. Yep, endless scrolling, just like TikTok. It’s a simple concept, but it looks pretty cool."
         },
         "section3": {
           "title": "What’s Next?",
-          "text1": "The whole project was done in about a week, so the focus was mainly on getting the foundation in place. Afterwards, I started thinking about ways to expand it—maybe by adding more interactivity, advanced logic, or exploring some new concepts I’ve learned since. But as usual, other projects and obligations got in the way.",
-          "text2": "Still, I really value what I learned from the experience. The code might feel a bit outdated now—both visually and technically—as there are many things I’d do differently today. I definitely see the potential to revisit it with fresh eyes and improved skills if the motivation strikes. The most important part is that it gave me a solid foundation for diving into modern, efficient web development."
+          "text1": "The whole project was done in about a week, so the focus was mainly on getting the foundation in place. Afterwards, I started thinking about ways to expand it, perhaps by adding more interactivity, advanced logic, or exploring some new concepts I’ve learned since. But as usual, other projects and obligations got in the way.",
+          "text2": "Still, I really value what I learned from the experience. The code might feel a bit outdated now, both visually and technically, as there are many things I’d do differently today. I definitely see the potential to revisit it with fresh eyes and improved skills if the motivation strikes. The most important part is that it gave me a solid foundation for diving into modern, efficient web development."
         }
       }
     }
+  },
+  "footer": {
+    "author": "Made by Patrick"
   }
 }

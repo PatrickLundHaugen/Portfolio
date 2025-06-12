@@ -18,7 +18,8 @@
         }
       },
       "button1": "Avbryt",
-      "button2": "Send"
+      "button2": "Send",
+      "toast": "Meldingen er sendt!"
     }
   },
   "home": {
@@ -130,5 +131,8 @@
         }
       }
     }
+  },
+  "footer": {
+    "author": "Laget av Patrick"
   }
 }
