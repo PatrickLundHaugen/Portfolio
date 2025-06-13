@@ -16,15 +16,15 @@ const RecentProjects = () => {
                     document.startViewTransition(() => {
                         flushSync(() => {
                             navigate("/project1");
-                            window.scrollTo(0, 0);
                         });
+                        window.scrollTo(0, 0);
                     });
                 }}
                       className="group flex flex-col gap-2 border rounded-xl p-4 shadow cursor-pointer">
                     <img
                         src={dashboard}
                         alt={t("recent-projects.dashboard.title")}
-                        className="w-full aspect-2/1 rounded-xl object-fit"
+                        className="w-full aspect-2/1 rounded-lg object-fit"
                         style={{viewTransitionName: "project1-image"}}
                     />
                     <h3 className="group-hover:underline font-medium leading-none tracking-tight">{t("recent-projects.dashboard.title")}</h3>
@@ -34,15 +34,15 @@ const RecentProjects = () => {
                     document.startViewTransition(() => {
                         flushSync(() => {
                             navigate("/project2");
-                            window.scrollTo(0, 0);
                         });
+                        window.scrollTo(0, 0);
                     });
                 }}
                       className="group flex flex-col gap-2 border rounded-xl p-4 shadow cursor-pointer">
                     <img
                         src={imageGenerator}
                         alt={t("recent-projects.image-generator.title")}
-                        className="w-full aspect-2/1 rounded-xl object-cover"
+                        className="w-full aspect-2/1 rounded-lg object-cover"
                         style={{viewTransitionName: "project2-image"}}
                     />
                     <h3 className="group-hover:underline font-medium leading-none tracking-tight">{t("recent-projects.image-generator.title")}</h3>
