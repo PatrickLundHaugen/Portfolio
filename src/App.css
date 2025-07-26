@@ -122,23 +122,3 @@
 body {
     font-family: "Inter", sans-serif;
 }
-
-.animate-fade-in-out {
-    animation: fade-in-out 5s ease forwards;
-}
-
-@keyframes fade-in-out {
-    0% {
-        opacity: 0;
-        transform: translateY(-25px);
-    }
-    10%,
-    90% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    100% {
-        opacity: 0;
-        transform: translateY(-25px);
-    }
-}

@@ -68,7 +68,7 @@ const Contact: React.FC = () => {
     return (
         <>
             {toast && (
-                <div className="fixed top-5 left-1/2 -translate-x-1/2 w-full max-w-9/10 sm:max-w-sm bg-card border border-input rounded-md p-4 shadow-lg animate-fade-in-out z-50">
+                <div className="fixed top-5 left-1/2 -translate-x-1/2 w-full max-w-9/10 sm:max-w-sm bg-card border border-input rounded-md p-4 shadow-lg z-50">
                     <p className="text-sm leading-none">{toast}</p>
                 </div>
             )}

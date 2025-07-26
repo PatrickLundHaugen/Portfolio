@@ -3,7 +3,7 @@ import { FaLinkedin } from "react-icons/fa";
 import { IoLogoGithub } from "react-icons/io";
 import { FiMail } from "react-icons/fi";
 import Tabs from "./components/tabs.tsx";
-import RecentProjects from "./components/recent-projects.tsx";
+import PreviousProjects from "./components/previous-projects.tsx";
 import { useTranslation } from "react-i18next";
 
 const Home = () => {
@@ -29,7 +29,7 @@ const Home = () => {
                 <Tabs />
             </section>
             <section>
-                <RecentProjects />
+                <PreviousProjects />
             </section>
         </>
     )

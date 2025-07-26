@@ -89,26 +89,6 @@
   "recent-projects": {
     "title": "Tidligere prosjekter",
     "back": "Gå tilbake",
-    "dashboard": {
-      "title": "Dashboard",
-      "date": "Februar 2025 - Nå",
-      "description": "Samling av praktiske funksjoner på ett sted, med fleksibel layout og lokal lagring.",
-      "text": {
-        "section1": {
-          "text1": "Dashboard er et prosjekt jeg har drevet på med litt av og på de siste månedene, og fungerer som et personlig kontrollpanel som samler nyttige funksjoner på ett sted. Tanken var å utvikle ett verktøy som var nyttig i hverdagen min, istedenfor et teknisk prosjekt jeg ikke ville bruke. Foreløpig har jeg implementert en rekke funksjoner, blant annet en chat-funksjon integrert med Gemini, et system for bokmerker, og en enkel notisblokk."
-        },
-        "section2": {
-          "title": "Det tekniske",
-          "text1": "Så mye av det tekniske var jeg allerede kjent med. Jeg brukte Tailwind og shadcn/ui som jeg allerede har brukt i tidligere prosjekter og derfor forblir det samme. Som nevnt over, integrerte jeg Gemini. Det var en ganske straightforward prosess, ettersom API-et fungerer ganske likt mange andre. Jeg valgte Gemini fremfor ChatGPT, hovedsakelig fordi det er gratis,og kan i mange tilfeller være et bedre alternativ.",
-          "text2": "En annen viktig (men lite synlig) del av prosjektet er den fleksible layouten. Her har jeg brukt dnd-kit, et bibliotek for drag-&-drop-funksjonalitet, som lar brukeren flytte og tilpasse kortene på siden slik de selv vil, både i størrelse og plassering.",
-          "text3": "Når det gjelder datalagring, har jeg foreløpig valgt å bruke localStorage. Det er enkelt og fungerer greit nok slik at brukerens data blir lagret mellom økter. En database ville selvsagt gitt mer robust lagring, men for dette stadiet i prosjektet holder det i massevis. Dette er uansett noe jeg kan bygge videre på senere, hvis det er behov."
-        },
-        "section3": {
-          "text1": "Jeg har satt utviklingen på pause foreløpig grunnet andre forpliktelser, men planen er absolutt å fortsette å jobbe med Dashboard jevnlig. Det finnes uendelige muligheter for utvikling, både små forbedringer og større utvidelser.",
-          "text2": "Kanskje jeg publiserer den etter hvert, vi får se :)"
-        }
-      }
-    },
 
     "image-generator": {
       "title": "Image Generator",
@@ -122,12 +102,57 @@
         },
         "section2": {
           "title": "Så hvordan funker det?",
-          "text1": "Det er ikke noe fancy greier her, men det funker og det ser bra ut. Jeg koblet til Unsplash sitt API (ja, det er stock photos), og bruker det til å hente inn så mange bilder jeg ønsker samtidig. Det første bildet virker som et Hero image, mens resten ruller nedover i ett galleri som aldri tar slutt. Jepp, det er endless scrolling, ja det er TikTok. Det er et enkelt konsept, men det ser ganske kult ut."
+          "text1": "Det er ikke noe fancy greier her, men det funker og det ser bra ut. Jeg koblet til Unsplash sitt API (ja, det er stock photos), og bruker det til å hente inn så mange bilder jeg ønsker samtidig. Det første bildet virker som et Hero image, mens resten ruller nedover i ett galleri som aldri tar slutt. Det er et enkelt konsept, men det ser ganske kult ut."
         },
         "section3": {
           "title": "Veien videre",
           "text1": "Hele prosjektet ble unnagjort på cirka en uke, så det ble mest fokus på å få grunnlaget på plass. I etterkant har jeg grubla over hvordan jeg kunne bygget videre på det, kanskje ved å involvere mer interaktivitet, avansert logikk, eller utforsket nye konseper jeg har lært siden. Men som oftest, har andre prosjekter og forpliktelser kommet i veien.",
           "text2": "Likevel ser jeg verdien i det jeg erfarte. Koden kan nok føles litt utdatert, både visuelt og teknisk, da jeg ville gjort mye annerledes nå. Jeg ser potensiale i å plukke det opp igjen med friske øyne og nye ferdigheter, skulle motivasjonen være der. Det viktigste er det solide grunnlaget som prosjektet ga meg slik at jeg kan bygge videre på det, særlig da det ble veien min inn til moderne og effektiv webutvikling."
+        }
+      }
+    },
+
+    "dashboard": {
+      "title": "Dashboard",
+      "date": "Februar 2025 - Mai 2025",
+      "description": "Samling av praktiske funksjoner på ett sted, med fleksibel layout og lokal lagring.",
+      "text": {
+        "section1": {
+          "text1": "Dashboard er et prosjekt jeg har drevet på med litt av og på de siste månedene, og fungerer som et personlig kontrollpanel som samler nyttige funksjoner på ett sted. Tanken var å utvikle ett verktøy som var nyttig i hverdagen min, istedenfor et teknisk prosjekt jeg ikke ville bruke. Foreløpig har jeg implementert en rekke funksjoner, blant annet en chat-funksjon integrert med Gemini, et system for bokmerker, og en enkel notisblokk."
+        },
+        "section2": {
+          "title": "Det tekniske",
+          "text1": "Så mye av det tekniske var jeg allerede kjent med. Jeg brukte Tailwind og shadcn/ui som jeg allerede har brukt i tidligere prosjekter og derfor forblir det samme. Som nevnt over, integrerte jeg Gemini. Det var en ganske straightforward prosess, ettersom API-et fungerer ganske likt mange andre. Jeg valgte Gemini fremfor ChatGPT, hovedsakelig fordi det er gratis ,og kan i mange tilfeller være et bedre alternativ.",
+          "text2": "En annen viktig (men lite synlig) del av prosjektet er den fleksible layouten. Her har jeg brukt dnd-kit, et bibliotek for drag-&-drop-funksjonalitet, som lar brukeren flytte og tilpasse kortene på siden slik de selv vil, både i størrelse og plassering.",
+          "text3": "Når det gjelder datalagring, har jeg foreløpig valgt å bruke localStorage. Det er enkelt og fungerer greit nok slik at brukerens data blir lagret mellom økter. En database ville selvsagt gitt mer robust lagring, men for dette stadiet i prosjektet holder det i massevis. Dette er uansett noe jeg kan bygge videre på senere, hvis det er behov."
+        },
+        "section3": {
+          "text1": "Jeg har satt utviklingen på pause foreløpig grunnet andre forpliktelser, men planen er absolutt å fortsette å jobbe med Dashboard jevnlig. Det finnes uendelige muligheter for utvikling, både små forbedringer og større utvidelser.",
+          "text2": "Kanskje jeg publiserer den etter hvert, vi får se :)"
+        }
+      }
+    },
+
+    "watchd": {
+      "title": "Watchd",
+      "date": "Juni 2025 - Nå",
+      "description": "Sjekk ut de mest populære filmer og serier eller vis fram dine favoritter på profilen din!",
+      "text": {
+        "section1": {
+          "text1": "Denne gangen har jeg tatt i bruk flere nye ting. Utgangspunktet var å bygge noe med Sanity CMS, men etter hvert som behovene økte, utvidet stacken seg også. Da implementerte jeg Prisma for første gang og koblet det opp til PostgreSQL for modellering av brukere og håndtering av data på en robust og fleksibel måte."
+        },
+        "section2": {
+          "title": "Hva er watchd?",
+          "text1": "Watchd er min personlige vri på IMDB og Letterboxd, et plattform hvor man kan søke etter filmer, serier, eller skuespillere. I tillegg har jeg bygget et brukersystem med støtte for registrering via brukernavn og passord, som gir deg tilgang til din egen personlig profil. Med en egen bruker, kan du legge til filmer og serier til din liste og vise fram favorittene dine hvis det er noe du likte ekstra godt :)",
+          "text2": "Videre, finnes det trending sider for både filmer og serier som er populært for tiden."
+        },
+        "section3": {
+          "title": "Stacken",
+          "text1": "Først og fremst brukte jeg Tailwind og shadcn/ui for mye av det visuelle. Det er lett, fleksibelt, og ryddig, så det var en no-brainer. Litt mer komplisert ble det da jeg begynte å integrere flere API-endepunkter sammen, samtidig som jeg ville inkludere Sanity schemas. All data hentes fra The Movie Database (TMDB). Jeg vurderte også IMDB og Letterboxd, men de har ikke åpen støtte for slik integrasjon."
+        },
+        "section4": {
+          "title": "Fremtidig planer",
+          "text1": "Jeg fortsetter med dette prosjektet fremdeles og vil gjøre det til jeg føler meg ferdig. TMDB tibyr utrolig mange forskjellige endepunkter så det vil alltid være noe kult å legge til. Jeg vil også prøve å oppdatere denne siden når det passer, forhåpentligvis om ikke så lenge."
         }
       }
     }

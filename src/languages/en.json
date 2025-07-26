@@ -89,9 +89,32 @@
   "recent-projects": {
     "title": "Previous projects",
     "back": "Go back",
+
+    "image-generator": {
+      "title": "Image Generator",
+      "date": "June 2024",
+      "description": "Search for images using keywords and view a gallery of results fetched from the Unsplash API.",
+      "text": {
+        "section1": {
+          "text1": "This was my very first React project! In addition to learning React and TypeScript from scratch, I also used Tailwind and shadcn/ui for the first time.",
+          "text2": "It was also the first time I integrated an API, so it was a lot of new stuff at once. Luckily, I already had some experience from earlier small projects using plain HTML, CSS, and JavaScript, so the transition wasn’t as overwhelming as it could have been. Even though the learning curve was steep, it was super fun to see how things started to come together, from component structure and styling to data fetching and dynamic content.",
+          "text3": "The project turned out to be a great introduction to modern tools and how development can be both more efficient and more enjoyable. And of course, it gave me tons of motivation to keep exploring!"
+        },
+        "section2": {
+          "title": "So How Does It Work?",
+          "text1": "Nothing fancy here, but it works and it looks good. I connected to the Unsplash API (yep, stock photos) and used it to fetch as many images as I wanted. The first image shows as a hero image, while the rest appear in a gallery that scrolls endlessly. It’s a simple concept, but it looks pretty cool."
+        },
+        "section3": {
+          "title": "What’s Next?",
+          "text1": "The whole project was done in about a week, so the focus was mainly on getting the foundation in place. Afterwards, I started thinking about ways to expand it, perhaps by adding more interactivity, advanced logic, or exploring some new concepts I’ve learned since. But as usual, other projects and obligations got in the way.",
+          "text2": "Still, I really value what I learned from the experience. The code might feel a bit outdated now, both visually and technically, as there are many things I’d do differently today. I definitely see the potential to revisit it with fresh eyes and improved skills if the motivation strikes. The most important part is that it gave me a solid foundation for diving into modern, efficient web development."
+        }
+      }
+    },
+
     "dashboard": {
       "title": "Dashboard",
-      "date": "February 2025 - Present",
+      "date": "February 2025 - May 2025",
       "description": "A collection of practical features in one place, with a flexible layout and local storage.",
       "text": {
         "section1": {
@@ -110,24 +133,26 @@
       }
     },
 
-    "image-generator": {
-      "title": "Image Generator",
-      "date": "June 2024",
-      "description": "Search for images using keywords and view a gallery of results fetched from the Unsplash API.",
+    "watchd": {
+      "title": "Watchd",
+      "date": "June 2025 - Present",
+      "description": "Check out the most popular movies and series or show off your favorites on your profile!",
       "text": {
         "section1": {
-          "text1": "This was my very first React project! In addition to learning React and TypeScript from scratch, I also used Tailwind and shadcn/ui for the first time.",
-          "text2": "It was also the first time I integrated an API, so it was a lot of new stuff at once. Luckily, I already had some experience from earlier small projects using plain HTML, CSS, and JavaScript, so the transition wasn’t as overwhelming as it could have been. Even though the learning curve was steep, it was super fun to see how things started to come together, from component structure and styling to data fetching and dynamic content.",
-          "text3": "The project turned out to be a great introduction to modern tools and how development can be both more efficient and more enjoyable. And of course, it gave me tons of motivation to keep exploring!"
+          "text1": "This time, I’ve incorporated several new tools. The starting point was to build something using Sanity CMS, but as the requirements grew, so did the tech stack. That’s when I implemented Prisma for the first time and connected it to PostgreSQL to model users and handle data in a robust and flexible way."
         },
         "section2": {
-          "title": "So How Does It Work?",
-          "text1": "Nothing fancy here, but it works and it looks good. I connected to the Unsplash API (yep, stock photos) and used it to fetch as many images as I wanted. The first image shows as a hero image, while the rest appear in a gallery that scrolls endlessly. Yep, endless scrolling, just like TikTok. It’s a simple concept, but it looks pretty cool."
+          "title": "What is watchd?",
+          "text1": "Watchd is my personal take on IMDb and Letterboxd, a platform where you can search for movies, series, or actors. I've also built a user system with support for registration using a username and password, giving you access to your own personal profile. With a user account, you can add movies and shows to your list and showcase your favorites if there's something you really enjoyed :)",
+          "text2": "In addition, there are trending pages for both movies and series, showing what’s popular at the moment."
         },
         "section3": {
-          "title": "What’s Next?",
-          "text1": "The whole project was done in about a week, so the focus was mainly on getting the foundation in place. Afterwards, I started thinking about ways to expand it, perhaps by adding more interactivity, advanced logic, or exploring some new concepts I’ve learned since. But as usual, other projects and obligations got in the way.",
-          "text2": "Still, I really value what I learned from the experience. The code might feel a bit outdated now, both visually and technically, as there are many things I’d do differently today. I definitely see the potential to revisit it with fresh eyes and improved skills if the motivation strikes. The most important part is that it gave me a solid foundation for diving into modern, efficient web development."
+          "title": "The Stack",
+          "text1": "First and foremost, I used Tailwind and shadcn/ui for most of the visuals. It’s lightweight, flexible, and clean, so that was a no-brainer. Things got a bit more complex when I started integrating multiple API endpoints while also wanting to include Sanity schemas. All the data is fetched from The Movie Database (TMDB). I also considered IMDb and Letterboxd, but they don’t offer open support for this kind of integration."
+        },
+        "section4": {
+          "title": "Future plans",
+          "text1": "I'm still actively working on this project and will continue until I feel it's truly complete. TMDB offers an incredible number of endpoints, so there will always be something cool to add. I also plan to update the site whenever it makes sense, hopefully sometime soon."
         }
       }
     }
