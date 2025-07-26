@@ -2,7 +2,8 @@ import { IoIosArrowBack } from "react-icons/io";
 import { Link } from "react-router-dom";
 import watchd1 from "../images/watchd-home.png";
 import watchd2 from "../images/watchd-search.png";
-import watchd3 from "../images/watchd-profile.png";
+import watchd3 from "../images/watchd-movie.png";
+import watchd4 from "../images/watchd-profile.png";
 import { useTranslation } from "react-i18next";
 import Autoplay from "embla-carousel-autoplay"
 import {Carousel, CarouselContent, CarouselItem, type CarouselApi} from "../components/ui/carousel.tsx";
@@ -55,6 +56,13 @@ const Project3 = () => {
                             <CarouselItem>
                                 <img
                                     src={watchd3}
+                                    alt={t("recent-projects.watchd.title")}
+                                    className="w-full aspect-2/1 rounded-lg object-contain border"
+                                />
+                            </CarouselItem>
+                            <CarouselItem>
+                                <img
+                                    src={watchd4}
                                     alt={t("recent-projects.watchd.title")}
                                     className="w-full aspect-2/1 rounded-lg object-contain border"
                                 />
