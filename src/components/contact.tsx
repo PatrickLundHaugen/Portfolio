@@ -75,7 +75,8 @@ const Contact: React.FC = () => {
 
             <button
                 onClick={() => setOpen(true)}
-                className="inline-flex items-center rounded-md border border-input shadow-sm cursor-pointer hover:bg-accent hover:text-accent-foreground transition-colors h-9 px-4 py-2 text-sm font-medium focus-visible:ring-ring focus-visible:ring-3"
+                disabled
+                className="inline-flex items-center rounded-md border border-input shadow-sm cursor-pointer hover:bg-accent hover:text-accent-foreground transition-colors h-9 px-4 py-2 text-sm font-medium disabled:pointer-events-none disabled:opacity-50 focus-visible:ring-ring focus-visible:ring-3"
             >
                 {t("navbar.contact.title")}
             </button>
