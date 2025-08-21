@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { TbExternalLink } from "react-icons/tb";
-import {useTranslation} from "react-i18next";
+import { useTranslation } from "react-i18next";
+import { Button } from "./ui/button.tsx";
 
-const Tabs = () => {
+export function Tabs() {
     const [selectedTab, setSelectedTab] = useState(0);
     const { t } = useTranslation();
 
@@ -29,26 +30,23 @@ const Tabs = () => {
                 {t(`home.tabs.${tabKey}.${itemId}.description`)}
             </p>
             <ul className="list-disc ml-4 text-sm text-primary">
-                {/* Dynamically render list items based on what exists in translation */}
                 {[1, 2, 3].map(itemNum => {
                     const translationKey = `home.tabs.${tabKey}.${itemId}.list.item${itemNum}`;
                     const translation = t(translationKey);
-                    // Only render if translation exists (doesn't return the key)
                     return translation !== translationKey ? (
                         <li key={itemNum}>{translation}</li>
                     ) : null;
                 })}
             </ul>
-            {/* Hardcode the specific button for education.1 */}
             {tabKey === 'education' && itemId === '1' && (
                 <div>
-                    <button
+                    <Button
                         onClick={() => window.open("https://www.uio.no/studier/emner/matnat/ifi/IN1060/v23/prosjekter-var-2023/super-circut/")}
-                        className="inline-flex items-center shadow border-transparent rounded-md py-1 px-3 text-xs font-semibold bg-primary cursor-pointer text-primary-foreground ml-1 transition-colors hover:bg-primary/90"
+                        size="link"
                     >
                         {t(`home.tabs.${tabKey}.${itemId}.project-link`)}
-                        <TbExternalLink className="ml-1 size-3" />
-                    </button>
+                        <TbExternalLink className="size-3" />
+                    </Button>
                 </div>
             )}
         </div>
@@ -71,7 +69,7 @@ const Tabs = () => {
                 {tabs.map((tab, index) => (
                     <button
                         key={index}
-                        className={`whitespace-nowrap px-3 py-1 rounded-sm text-sm font-medium cursor-pointer transition-colors ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ${
+                        className={`whitespace-nowrap px-3 py-1 rounded-sm text-sm font-medium cursor-pointer ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ${
                             selectedTab === index
                                 ? 'shadow bg-background text-foreground'
                                 : 'text-muted-foreground'
@@ -89,5 +87,3 @@ const Tabs = () => {
         </>
     );
 }
-
-export default Tabs;

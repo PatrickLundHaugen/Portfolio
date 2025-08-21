@@ -4,15 +4,7 @@ import imageGenerator from "../images/image-generator.png";
 import dashboard from "../images/dashboard.png";
 import watchd from "../images/watchd-home.png";
 import { useTranslation } from "react-i18next";
-
-import {
-    Carousel,
-    CarouselContent,
-    CarouselItem,
-    CarouselPrevious,
-    CarouselNext,
-    type CarouselApi,
-} from "./ui/carousel";
+import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext, type CarouselApi } from "./ui/carousel";
 
 const projects = [
     {
@@ -35,7 +27,7 @@ const projects = [
     },
 ];
 
-const PreviousProjects = () => {
+export function PreviousProjects() {
     const { t } = useTranslation();
     const visibleCount = 2;
     const [api, setApi] = useState<CarouselApi>();
@@ -114,6 +106,4 @@ const PreviousProjects = () => {
             </Carousel>
         </div>
     );
-};
-
-export default PreviousProjects;
+}

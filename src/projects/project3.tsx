@@ -6,10 +6,10 @@ import watchd3 from "../images/watchd-movie.png";
 import watchd4 from "../images/watchd-profile.png";
 import { useTranslation } from "react-i18next";
 import Autoplay from "embla-carousel-autoplay"
-import {Carousel, CarouselContent, CarouselItem, type CarouselApi} from "../components/ui/carousel.tsx";
-import {useEffect, useState} from "react";
+import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "../components/ui/carousel.tsx";
+import { useEffect, useState } from "react";
 
-const Project3 = () => {
+export function Project3() {
     const { t } = useTranslation();
 
     const [api, setApi] = useState<CarouselApi>()
@@ -33,7 +33,7 @@ const Project3 = () => {
         <>
             <Link to="/" className="inline-flex gap-1 items-center cursor-pointer hover:underline"><IoIosArrowBack/>{t("recent-projects.back")}</Link>
             <section className="flex flex-col gap-4">
-                <div className="w-full px-8">
+                <div className="w-full px-8 [&_img]:w-full [&_img]:aspect-[2/1] [&_img]:rounded-lg [&_img]:object-contain [&_img]:border [&_img]:bg-white">
                     <Carousel
                         opts={{loop: true}}
                         plugins={[Autoplay({delay: 5000, stopOnInteraction: false,}),]}
@@ -43,28 +43,27 @@ const Project3 = () => {
                                 <img
                                     src={watchd1}
                                     alt={t("recent-projects.watchd.title")}
-                                    className="w-full aspect-2/1 rounded-lg object-contain border"
                                 />
                             </CarouselItem>
                             <CarouselItem>
                                 <img
                                     src={watchd2}
                                     alt={t("recent-projects.watchd.title")}
-                                    className="w-full aspect-2/1 rounded-lg object-contain border"
+
                                 />
                             </CarouselItem>
                             <CarouselItem>
                                 <img
                                     src={watchd3}
                                     alt={t("recent-projects.watchd.title")}
-                                    className="w-full aspect-2/1 rounded-lg object-contain border"
+
                                 />
                             </CarouselItem>
                             <CarouselItem>
                                 <img
                                     src={watchd4}
                                     alt={t("recent-projects.watchd.title")}
-                                    className="w-full aspect-2/1 rounded-lg object-contain border"
+
                                 />
                             </CarouselItem>
                         </CarouselContent>
@@ -101,5 +100,3 @@ const Project3 = () => {
         </>
     )
 }
-
-export default Project3;

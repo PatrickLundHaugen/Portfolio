@@ -1,12 +1,10 @@
 import { IoLocationOutline } from "react-icons/io5";
-import { FaLinkedin } from "react-icons/fa";
-import { IoLogoGithub } from "react-icons/io";
-import { FiMail } from "react-icons/fi";
-import Tabs from "./components/tabs.tsx";
-import PreviousProjects from "./components/previous-projects.tsx";
+import { Tabs } from "./components/tabs.tsx";
+import { PreviousProjects } from "./components/previous-projects.tsx";
 import { useTranslation } from "react-i18next";
+import { IconLinks } from "./components/icon-links.tsx";
 
-const Home = () => {
+export function Home() {
     const { t } = useTranslation();
 
     return (
@@ -18,12 +16,7 @@ const Home = () => {
                     <p>{t("home.location")}</p>
                 </div>
                 <p>{t("home.about")}</p>
-                <div
-                    className="flex gap-2 text-xl text-muted-foreground *:cursor-pointer *:transition-colors *:hover:text-primary">
-                    <a href="https://www.linkedin.com/in/patrick-lund-haugen-6776092ab/" target="_blank"><FaLinkedin/></a>
-                    <a href="https://github.com/PatrickLundHaugen" target="_blank"><IoLogoGithub/></a>
-                    <a href="mailto:patricklundhaugen@gmail.com"><FiMail/></a>
-                </div>
+                <IconLinks />
             </section>
             <section>
                 <Tabs />
@@ -34,5 +27,3 @@ const Home = () => {
         </>
     )
 }
-
-export default Home;

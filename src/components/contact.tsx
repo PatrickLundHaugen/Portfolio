@@ -1,6 +1,6 @@
-import { useState } from "react";
+import React, { useState, JSX } from "react";
 import { useTranslation } from "react-i18next";
-import * as React from "react";
+import { Button } from "./ui/button.tsx";
 
 interface FormData {
     name: string;
@@ -8,7 +8,7 @@ interface FormData {
     message: string;
 }
 
-const Contact: React.FC = () => {
+export function Contact(): JSX.Element {
     const { t } = useTranslation();
     const [isOpen, setOpen] = useState(false);
     const [formData, setFormData] = useState<FormData>({ name: '', email: '', message: '' });
@@ -73,13 +73,13 @@ const Contact: React.FC = () => {
                 </div>
             )}
 
-            <button
+            <Button
                 onClick={() => setOpen(true)}
+                variant="outline"
                 disabled
-                className="inline-flex items-center rounded-md border border-input shadow-sm cursor-pointer hover:bg-accent hover:text-accent-foreground transition-colors h-9 px-4 py-2 text-sm font-medium disabled:pointer-events-none disabled:opacity-50 focus-visible:ring-ring focus-visible:ring-3"
             >
                 {t("navbar.contact.title")}
-            </button>
+            </Button>
 
             {isOpen && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center">
@@ -138,24 +138,24 @@ const Contact: React.FC = () => {
                                 className="border-input placeholder:text-muted-foreground dark:bg-input/30 flex field-sizing-content min-h-16 w-full rounded-md border resize-y bg-transparent px-3 py-2 shadow-xs transition-all outline-none md:text-sm focus-visible:border-ring"
                             />
                             <div className="flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
-                                <button
+                                <Button
                                     type="button"
                                     onClick={handleClose}
-                                    className="bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80 h-9 px-4 py-2 whitespace-nowrap cursor-pointer rounded-md text-sm font-medium transition-all shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-3"
+                                    variant="secondary"
                                 >
                                     {t("navbar.contact.button1")}
-                                </button>
+                                </Button>
 
-                                <button
+                                <Button
                                     type="submit"
                                     disabled={status === 'Sending...'}
                                     aria-disabled={status === 'Sending...'}
-                                    className={`bg-primary text-primary-foreground shadow-xs hover:bg-primary/90 h-9 px-4 py-2 whitespace-nowrap rounded-md text-sm font-medium transition-all shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-3 ${
+                                    className={` ${
                                         status === 'Sending...' ? 'opacity-50 cursor-not-allowed' : ''
                                     }`}
                                 >
                                     {status === 'Sending...' ? 'Sending...' : t('navbar.contact.button2')}
-                                </button>
+                                </Button>
                             </div>
                         </form>
                     </div>
@@ -163,6 +163,4 @@ const Contact: React.FC = () => {
             )}
         </>
     );
-};
-
-export default Contact;
+}

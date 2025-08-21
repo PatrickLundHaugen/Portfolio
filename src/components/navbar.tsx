@@ -1,31 +1,31 @@
 import { ModeToggle } from "../dark-mode/mode-toggle.tsx";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
-import Contact from "./contact.tsx";
+import { Contact } from "./contact.tsx";
+import { Button } from "./ui/button.tsx";
 
-function Navbar() {
-  const { i18n } = useTranslation();
-  const [currentLanguage, setCurrentLanguage] = useState(i18n.language);
-  const handleLanguageToggle = () => {
+export function Navbar() {
+    const { i18n } = useTranslation();
+    const [currentLanguage, setCurrentLanguage] = useState(i18n.language);
+    const handleLanguageToggle = () => {
     const newLanguage = currentLanguage === "no" ? "en" : "no";
     setCurrentLanguage(newLanguage);
     i18n.changeLanguage(newLanguage);
-  };
+    };
 
-  return (
-    <nav className="inline-flex justify-end gap-2 py-4">
-      <Contact />
+    return (
+        <nav className="inline-flex justify-end gap-2 py-4">
+            <Contact />
 
-      <ModeToggle />
+            <ModeToggle />
 
-      <button
-        onClick={handleLanguageToggle}
-        className="inline-flex items-center justify-center rounded-md border border-input shadow-sm cursor-pointer hover:bg-accent hover:text-accent-foreground transition-colors size-9 text-sm font-medium focus-visible:ring-ring focus-visible:ring-3"
-      >
-        {i18n.language === "en" ? "NO" : "EN"}
-      </button>
-    </nav>
-  );
+            <Button
+                onClick={handleLanguageToggle}
+                variant="outline"
+                size="icon"
+            >
+                {i18n.language === "en" ? "NO" : "EN"}
+            </Button>
+        </nav>
+    );
 }
-
-export default Navbar;

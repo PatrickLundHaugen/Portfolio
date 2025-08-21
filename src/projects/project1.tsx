@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import imageGenerator from "../images/image-generator.png";
 import { useTranslation } from "react-i18next";
 
-const Project1 = () => {
+export function Project1() {
     const { t } = useTranslation();
 
     return (
@@ -14,7 +14,7 @@ const Project1 = () => {
                     <img
                         src={imageGenerator}
                         alt={t("recent-projects.image-generator.title")}
-                        className="w-full aspect-2/1 rounded-lg object-cover border"
+                        className="w-full aspect-2/1 rounded-lg object-cover dark:border"
                     />
                 </div>
                 <div>
@@ -37,5 +37,3 @@ const Project1 = () => {
         </>
     )
 }
-
-export default Project1;

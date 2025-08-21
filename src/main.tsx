@@ -1,7 +1,7 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './App.css';
-import App from './App';
+import { App } from './App';
 import { ThemeProvider } from './dark-mode/theme-provider';
 import { BrowserRouter } from "react-router-dom";
 import i18n from "i18next";

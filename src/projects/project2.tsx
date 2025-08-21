@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import dashboard from "../images/dashboard.png";
 import { useTranslation } from "react-i18next";
 
-const Project2 = () => {
+export function Project2() {
     const { t } = useTranslation();
 
     return (
@@ -14,7 +14,7 @@ const Project2 = () => {
                     <img
                         src={dashboard}
                         alt={t("recent-projects.dashboard.title")}
-                        className="w-full aspect-2/1 rounded-lg object-fit border"
+                        className="w-full aspect-2/1 rounded-lg object-fit dark:border"
                     />
                 </div>
                 <div>
@@ -36,5 +36,3 @@ const Project2 = () => {
         </>
     )
 }
-
-export default Project2;
