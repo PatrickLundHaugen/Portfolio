@@ -27,11 +27,13 @@ const projects = [
     },
 ];
 
+const displayedProjects = [...projects].reverse();
+
 export function PreviousProjects() {
     const { t } = useTranslation();
-    const visibleCount = 2;
     const [api, setApi] = useState<CarouselApi>();
     const [currentSnap, setCurrentSnap] = useState(0);
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
     const onSelect = useCallback((carouselApi: CarouselApi) => {
         if (!carouselApi) return;
@@ -49,7 +51,11 @@ export function PreviousProjects() {
         };
     }, [api, onSelect]);
 
-    const displayedProjects = [...projects].reverse();
+    useEffect(() => {
+        const handleResize = () => setWindowWidth(window.innerWidth);
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
 
     return (
         <div>
@@ -67,7 +73,7 @@ export function PreviousProjects() {
                     {displayedProjects.map((proj, index) => (
                         <CarouselItem
                             key={index}
-                            className="md:basis-1/2"
+                            className="basis-full md:basis-1/2"
                         >
                             <Link
                                 to={proj.to}
@@ -92,16 +98,17 @@ export function PreviousProjects() {
                 <CarouselNext/>
 
                 <div className="flex justify-center mt-4 gap-2">
-                    {projects.map((_, index) => (
-                        <div
-                            key={index}
-                            className={`size-2 rounded-full transition-all ${
-                                index >= currentSnap && index < currentSnap + visibleCount
-                                    ? "bg-muted-foreground"
-                                    : "bg-muted"
-                            }`}
-                        />
-                    ))}
+                    {projects.map((_, index) => {
+                        const isActive = index >= currentSnap && index < currentSnap + (windowWidth >= 768 ? 2 : 1);
+                        return (
+                            <div
+                                key={index}
+                                className={`size-2 rounded-full transition-all ${
+                                    isActive ? "bg-muted-foreground" : "bg-muted"
+                                }`}
+                            />
+                        );
+                    })}
                 </div>
             </Carousel>
         </div>

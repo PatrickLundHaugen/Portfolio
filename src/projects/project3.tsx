@@ -33,7 +33,7 @@ export function Project3() {
         <>
             <Link to="/" className="inline-flex gap-1 items-center cursor-pointer hover:underline"><IoIosArrowBack/>{t("recent-projects.back")}</Link>
             <section className="flex flex-col gap-4">
-                <div className="w-full px-8 [&_img]:w-full [&_img]:aspect-[2/1] [&_img]:rounded-lg [&_img]:object-contain [&_img]:border [&_img]:bg-white">
+                <div className="w-full px-2 md:px-8 [&_img]:w-full [&_img]:aspect-[2/1] [&_img]:rounded-lg [&_img]:object-contain [&_img]:border [&_img]:bg-white">
                     <Carousel
                         opts={{loop: true}}
                         plugins={[Autoplay({delay: 5000, stopOnInteraction: false,}),]}
