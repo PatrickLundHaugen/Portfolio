@@ -10,7 +10,7 @@ export function Project1() {
         <>
             <Link to="/" className="inline-flex gap-1 items-center cursor-pointer hover:underline"><IoIosArrowBack/>{t("recent-projects.back")}</Link>
             <section className="flex flex-col gap-4">
-                <div className="w-full px-8">
+                <div className="w-full px-2 md:px-8">
                     <img
                         src={imageGenerator}
                         alt={t("recent-projects.image-generator.title")}
