@@ -174,8 +174,9 @@ export function CarouselContent({ className, ...props }: React.ComponentProps<"d
         >
             <div
                 className={cn(
-                    "flex",
+                    "flex will-change-transform",
                     orientation === "horizontal" ? "-ml-4" : "-mt-4 flex-col",
+                    "transform-gpu",
                     className
                 )}
                 {...props}
