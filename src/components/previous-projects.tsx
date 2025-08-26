@@ -57,6 +57,12 @@ export function PreviousProjects() {
         return () => window.removeEventListener("resize", handleResize);
     }, []);
 
+    const handleImageLoad = () => {
+        if (api) {
+            api.reInit();
+        }
+    };
+
     return (
         <div>
             <h2 className="text-xl font-semibold mb-2">{t("recent-projects.title")}</h2>
@@ -82,6 +88,8 @@ export function PreviousProjects() {
                                 <img
                                     src={proj.image}
                                     alt={t(proj.titleKey)}
+                                    loading="lazy"
+                                    onLoad={handleImageLoad}
                                     className="w-full aspect-2/1 rounded-lg object-cover"
                                 />
                                 <h3 className="group-hover:underline font-medium leading-none tracking-tight">
