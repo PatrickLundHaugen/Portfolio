@@ -1,8 +1,8 @@
 import { useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
-import imageGenerator from "../images/image-generator.png";
-import dashboard from "../images/dashboard.png";
-import watchd from "../images/watchd-home.png";
+import imageGenerator from "../images/image-generator.webp";
+import dashboard from "../images/dashboard.webp";
+import watchd from "../images/watchd-home.webp";
 import { useTranslation } from "react-i18next";
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext, type CarouselApi } from "./ui/carousel";
 

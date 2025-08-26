@@ -1,12 +1,12 @@
 import { IoIosArrowBack } from "react-icons/io";
 import { Link } from "react-router-dom";
-import watchd1 from "../images/watchd-home.png";
-import watchd2 from "../images/watchd-search.png";
-import watchd3 from "../images/watchd-movie.png";
-import watchd4 from "../images/watchd-profile.png";
+import watchd1 from "../images/watchd-home.webp";
+import watchd2 from "../images/watchd-search.webp";
+import watchd3 from "../images/watchd-movie.webp";
+import watchd4 from "../images/watchd-profile.webp";
 import { useTranslation } from "react-i18next";
 import Autoplay from "embla-carousel-autoplay"
-import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "../components/ui/carousel.tsx";
+import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "../components/ui/carousel";
 import { useEffect, useState } from "react";
 
 export function Project3() {
@@ -29,43 +29,23 @@ export function Project3() {
         })
     }, [api])
 
+    const images = [watchd1, watchd2, watchd3, watchd4];
+
     return (
         <>
             <Link to="/" className="inline-flex gap-1 items-center cursor-pointer hover:underline"><IoIosArrowBack/>{t("recent-projects.back")}</Link>
             <section className="flex flex-col gap-4">
-                <div className="w-full px-2 md:px-8 [&_img]:w-full [&_img]:aspect-[2/1] [&_img]:rounded-lg [&_img]:object-contain [&_img]:border [&_img]:bg-white">
+                <div className="w-full px-2 md:px-8 [&_img]:aspect-[2/1] [&_img]:rounded-lg [&_img]:object-contain [&_img]:border [&_img]:bg-white">
                     <Carousel
-                        opts={{loop: true}}
+                        opts={{ loop: true }}
                         plugins={[Autoplay({delay: 5000, stopOnInteraction: false,}),]}
                         setApi={setApi}>
                         <CarouselContent>
-                            <CarouselItem>
-                                <img
-                                    src={watchd1}
-                                    alt={t("recent-projects.watchd.title")}
-                                />
-                            </CarouselItem>
-                            <CarouselItem>
-                                <img
-                                    src={watchd2}
-                                    alt={t("recent-projects.watchd.title")}
-
-                                />
-                            </CarouselItem>
-                            <CarouselItem>
-                                <img
-                                    src={watchd3}
-                                    alt={t("recent-projects.watchd.title")}
-
-                                />
-                            </CarouselItem>
-                            <CarouselItem>
-                                <img
-                                    src={watchd4}
-                                    alt={t("recent-projects.watchd.title")}
-
-                                />
-                            </CarouselItem>
+                            {images.map((img, index) => (
+                                <CarouselItem key={index}>
+                                    <img src={img} alt={t("recent-projects.watchd.title")} />
+                                </CarouselItem>
+                            ))}
                         </CarouselContent>
                     </Carousel>
                     <div className="flex justify-center gap-2 py-2">

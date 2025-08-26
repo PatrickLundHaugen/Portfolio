@@ -1,6 +1,6 @@
 import { IoIosArrowBack } from "react-icons/io";
 import { Link } from "react-router-dom";
-import dashboard from "../images/dashboard.png";
+import dashboard from "../images/dashboard.webp";
 import { useTranslation } from "react-i18next";
 
 export function Project2() {

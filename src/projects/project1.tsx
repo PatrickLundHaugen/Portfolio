@@ -1,6 +1,6 @@
 import { IoIosArrowBack } from "react-icons/io";
 import { Link } from "react-router-dom";
-import imageGenerator from "../images/image-generator.png";
+import imageGenerator from "../images/image-generator.webp";
 import { useTranslation } from "react-i18next";
 
 export function Project1() {
