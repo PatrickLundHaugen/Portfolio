@@ -124,8 +124,12 @@ export function Carousel({
         api.on("reInit", onSelect);
         api.on("select", onSelect);
 
+        requestAnimationFrame(() => onSelect(api));
+        const timeout = setTimeout(() => api.reInit(), 100);
+
         return () => {
             api?.off("select", onSelect);
+            clearTimeout(timeout);
         };
     }, [api, onSelect]);
 
