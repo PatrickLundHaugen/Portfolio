@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { TbExternalLink } from "react-icons/tb";
 import { useTranslation } from "react-i18next";
-import { Button } from "./ui/button.tsx";
+import { Button } from "./ui/button";
 
 export function Tabs() {
     const [selectedTab, setSelectedTab] = useState(0);
@@ -23,9 +23,9 @@ export function Tabs() {
             <p className="text-xs text-muted-foreground">
                 {t(`home.tabs.${tabKey}.${itemId}.date`)}
             </p>
-            <h3 className="font-semibold">
+            <h1 className="font-semibold">
                 {t(`home.tabs.${tabKey}.${itemId}.title`)}
-            </h3>
+            </h1>
             <p className="text-sm text-muted-foreground">
                 {t(`home.tabs.${tabKey}.${itemId}.description`)}
             </p>
@@ -72,7 +72,7 @@ export function Tabs() {
                         className={`whitespace-nowrap px-3 py-1 rounded-sm text-sm font-medium cursor-pointer ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ${
                             selectedTab === index
                                 ? 'shadow bg-background text-foreground'
-                                : 'text-muted-foreground'
+                                : 'text-foreground'
                         }`}
                         onClick={() => setSelectedTab(index)}
                     >

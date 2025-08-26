@@ -1,10 +1,10 @@
-import { ModeToggle } from "../dark-mode/mode-toggle.tsx";
+import { ModeToggle } from "../dark-mode/mode-toggle";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
-import { Contact } from "./contact.tsx";
-import { Button } from "./ui/button.tsx";
+import { Contact } from "./contact";
+import { Button } from "./ui/button";
 
-export function Navbar() {
+export function Nav() {
     const { i18n } = useTranslation();
     const [currentLanguage, setCurrentLanguage] = useState(i18n.language);
     const handleLanguageToggle = () => {
@@ -23,6 +23,7 @@ export function Navbar() {
                 onClick={handleLanguageToggle}
                 variant="outline"
                 size="icon"
+                aria-label="Switch language"
             >
                 {i18n.language === "en" ? "NO" : "EN"}
             </Button>
