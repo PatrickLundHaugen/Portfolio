@@ -55,7 +55,7 @@ export function Tabs() {
     const tabs = tabsConfig.map(({ key, items }) => ({
         label: t(`home.tabs.${key}.label`),
         content: (
-            <div className="shadow border rounded-xl p-6 space-y-6">
+            <div className="shadow-sm border rounded-xl p-6 space-y-6">
                 {items.map(itemId => (
                     <TabItem key={itemId} tabKey={key} itemId={itemId} />
                 ))}

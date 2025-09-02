@@ -1,13 +1,17 @@
-import { IoIosArrowBack } from "react-icons/io";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import Autoplay from "embla-carousel-autoplay";
+import { IoIosArrowBack } from "react-icons/io";
+import { TbExternalLink } from "react-icons/tb";
+
+import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "../components/ui/carousel";
+import { Button } from "../components/ui/button";
+
 import watchd1 from "../images/watchd-home.webp";
 import watchd2 from "../images/watchd-search.webp";
 import watchd3 from "../images/watchd-movie.webp";
 import watchd4 from "../images/watchd-profile.webp";
-import { useTranslation } from "react-i18next";
-import Autoplay from "embla-carousel-autoplay"
-import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "../components/ui/carousel";
-import { useEffect, useState } from "react";
 
 export function Project3() {
     const { t } = useTranslation();
@@ -75,6 +79,15 @@ export function Project3() {
                     <hr/>
                     <h2 className="text-foreground text-lg font-semibold">{t("recent-projects.watchd.text.section4.title")}</h2>
                     <p>{t("recent-projects.watchd.text.section4.text1")}</p>
+                </div>
+                <div>
+                    <Button
+                        onClick={() => window.open("https://github.com/PatrickLundHaugen/Watchd")}
+                        size="link"
+                    >
+                        {t("recent-projects.watchd.links")}
+                        <TbExternalLink className="size-3" />
+                    </Button>
                 </div>
             </section>
         </>

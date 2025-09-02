@@ -57,12 +57,6 @@ export function PreviousProjects() {
         return () => window.removeEventListener("resize", handleResize);
     }, []);
 
-    const handleImageLoad = () => {
-        if (api) {
-            api.reInit();
-        }
-    };
-
     return (
         <div>
             <h2 className="text-xl font-semibold mb-2">{t("recent-projects.title")}</h2>
@@ -79,17 +73,16 @@ export function PreviousProjects() {
                     {displayedProjects.map((proj, index) => (
                         <CarouselItem
                             key={index}
-                            className="basis-full md:basis-1/2"
+                            className="pb-4 md:basis-1/2"
                         >
                             <Link
                                 to={proj.to}
-                                className="group flex flex-col gap-2 border rounded-xl p-4 shadow cursor-pointer h-full"
+                                className="group flex flex-col gap-2 border rounded-xl p-4 shadow-sm cursor-pointer h-full"
                             >
                                 <img
                                     src={proj.image}
                                     alt={t(proj.titleKey)}
                                     loading="lazy"
-                                    onLoad={handleImageLoad}
                                     className="w-full aspect-2/1 rounded-lg object-cover"
                                 />
                                 <h3 className="group-hover:underline font-medium leading-none tracking-tight">
@@ -105,7 +98,7 @@ export function PreviousProjects() {
                 <CarouselPrevious/>
                 <CarouselNext/>
 
-                <div className="flex justify-center mt-4 gap-2">
+                <div className="flex justify-center gap-2">
                     {projects.map((_, index) => {
                         const isActive = index >= currentSnap && index < currentSnap + (windowWidth >= 768 ? 2 : 1);
                         return (

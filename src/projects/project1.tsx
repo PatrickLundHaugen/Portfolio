@@ -1,7 +1,11 @@
-import { IoIosArrowBack } from "react-icons/io";
 import { Link } from "react-router-dom";
-import imageGenerator from "../images/image-generator.webp";
 import { useTranslation } from "react-i18next";
+import { IoIosArrowBack } from "react-icons/io";
+import { TbExternalLink } from "react-icons/tb";
+
+import { Button } from "../components/ui/button";
+
+import imageGenerator from "../images/image-generator.webp";
 
 export function Project1() {
     const { t } = useTranslation();
@@ -32,6 +36,15 @@ export function Project1() {
                     <h2 className="text-foreground text-lg font-semibold">{t("recent-projects.image-generator.text.section3.title")}</h2>
                     <p>{t("recent-projects.image-generator.text.section3.text1")}</p>
                     <p>{t("recent-projects.image-generator.text.section3.text2")}</p>
+                </div>
+                <div>
+                    <Button
+                        onClick={() => window.open("https://github.com/PatrickLundHaugen/Image-Generator")}
+                        size="link"
+                    >
+                        {t("recent-projects.image-generator.links")}
+                        <TbExternalLink className="size-3" />
+                    </Button>
                 </div>
             </section>
         </>

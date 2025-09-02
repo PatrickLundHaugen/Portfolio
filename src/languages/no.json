@@ -109,7 +109,8 @@
           "text1": "Hele prosjektet ble unnagjort på cirka en uke, så det ble mest fokus på å få grunnlaget på plass. I etterkant har jeg grubla over hvordan jeg kunne bygget videre på det, kanskje ved å involvere mer interaktivitet, avansert logikk, eller utforsket nye konseper jeg har lært siden. Men som oftest, har andre prosjekter og forpliktelser kommet i veien.",
           "text2": "Likevel ser jeg verdien i det jeg erfarte. Koden kan nok føles litt utdatert, både visuelt og teknisk, da jeg ville gjort mye annerledes nå. Jeg ser potensiale i å plukke det opp igjen med friske øyne og nye ferdigheter, skulle motivasjonen være der. Det viktigste er det solide grunnlaget som prosjektet ga meg slik at jeg kan bygge videre på det, særlig da det ble veien min inn til moderne og effektiv webutvikling."
         }
-      }
+      },
+      "links": "Kode"
     },
 
     "dashboard": {
@@ -130,7 +131,8 @@
           "text1": "Jeg har satt utviklingen på pause foreløpig grunnet andre forpliktelser, men planen er absolutt å fortsette å jobbe med Dashboard jevnlig. Det finnes uendelige muligheter for utvikling, både små forbedringer og større utvidelser.",
           "text2": "Kanskje jeg publiserer den etter hvert, vi får se :)"
         }
-      }
+      },
+      "links": "Kode"
     },
 
     "watchd": {
@@ -154,7 +156,8 @@
           "title": "Fremtidig planer",
           "text1": "Jeg fortsetter med dette prosjektet fremdeles og vil gjøre det til jeg føler meg ferdig. TMDB tibyr utrolig mange forskjellige endepunkter så det vil alltid være noe kult å legge til. Jeg vil også prøve å oppdatere denne siden når det passer, forhåpentligvis om ikke så lenge."
         }
-      }
+      },
+      "links": "Kode"
     }
   },
   "footer": {

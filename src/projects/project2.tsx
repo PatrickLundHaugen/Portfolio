@@ -1,7 +1,11 @@
-import { IoIosArrowBack } from "react-icons/io";
 import { Link } from "react-router-dom";
-import dashboard from "../images/dashboard.webp";
 import { useTranslation } from "react-i18next";
+import { IoIosArrowBack } from "react-icons/io";
+import { TbExternalLink } from "react-icons/tb";
+
+import { Button } from "../components/ui/button";
+
+import dashboard from "../images/dashboard.webp";
 
 export function Project2() {
     const { t } = useTranslation();
@@ -31,6 +35,15 @@ export function Project2() {
                     <hr/>
                     <p>{t("recent-projects.dashboard.text.section3.text1")}</p>
                     <p>{t("recent-projects.dashboard.text.section3.text2")}</p>
+                </div>
+                <div>
+                    <Button
+                        onClick={() => window.open("https://github.com/PatrickLundHaugen/dashboard")}
+                        size="link"
+                    >
+                        {t("recent-projects.dashboard.links")}
+                        <TbExternalLink className="size-3" />
+                    </Button>
                 </div>
             </section>
         </>

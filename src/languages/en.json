@@ -109,7 +109,8 @@
           "text1": "The whole project was done in about a week, so the focus was mainly on getting the foundation in place. Afterwards, I started thinking about ways to expand it, perhaps by adding more interactivity, advanced logic, or exploring some new concepts I’ve learned since. But as usual, other projects and obligations got in the way.",
           "text2": "Still, I really value what I learned from the experience. The code might feel a bit outdated now, both visually and technically, as there are many things I’d do differently today. I definitely see the potential to revisit it with fresh eyes and improved skills if the motivation strikes. The most important part is that it gave me a solid foundation for diving into modern, efficient web development."
         }
-      }
+      },
+      "links": "Source Code"
     },
 
     "dashboard": {
@@ -130,7 +131,8 @@
           "text1": "I've paused development for now due to other commitments, but I absolutely plan to keep working on Dashboard regularly. There are endless possibilities for improvements, both small tweaks and larger additions.",
           "text2": "Maybe I’ll publish it eventually, we’ll see :)"
         }
-      }
+      },
+      "links": "Source Code"
     },
 
     "watchd": {
@@ -154,7 +156,8 @@
           "title": "Future plans",
           "text1": "I'm still actively working on this project and will continue until I feel it's truly complete. TMDB offers an incredible number of endpoints, so there will always be something cool to add. I also plan to update the site whenever it makes sense, hopefully sometime soon."
         }
-      }
+      },
+      "links": "Source Code"
     }
   },
   "footer": {
