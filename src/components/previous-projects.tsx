@@ -33,7 +33,7 @@ export function PreviousProjects() {
     const { t } = useTranslation();
     const [api, setApi] = useState<CarouselApi>();
     const [currentSnap, setCurrentSnap] = useState(0);
-    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+    const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 0);
 
     const onSelect = useCallback((carouselApi: CarouselApi) => {
         if (!carouselApi) return;
@@ -52,15 +52,25 @@ export function PreviousProjects() {
     }, [api, onSelect]);
 
     useEffect(() => {
+        if (typeof window === 'undefined') return;
+
+        setWindowWidth(window.innerWidth);
         const handleResize = () => setWindowWidth(window.innerWidth);
         window.addEventListener("resize", handleResize);
         return () => window.removeEventListener("resize", handleResize);
     }, []);
 
+    const [isMounted, setIsMounted] = useState(false);
+    useEffect(() => {
+        setIsMounted(true);
+        if (api) {
+            setTimeout(() => api.reInit(), 100);
+        }
+    }, [api]);
+
     return (
         <div>
             <h2 className="text-xl font-semibold mb-2">{t("recent-projects.title")}</h2>
-
             <Carousel
                 setApi={setApi}
                 opts={{
@@ -95,9 +105,10 @@ export function PreviousProjects() {
                         </CarouselItem>
                     ))}
                 </CarouselContent>
-                <CarouselPrevious/>
-                <CarouselNext/>
-
+                <div className={isMounted ? '' : 'invisible'}>
+                    <CarouselPrevious/>
+                    <CarouselNext/>
+                </div>
                 <div className="flex justify-center gap-2">
                     {projects.map((_, index) => {
                         const isActive = index >= currentSnap && index < currentSnap + (windowWidth >= 768 ? 2 : 1);
