@@ -1,4 +1,5 @@
 import React from "react";
+import { cn } from "../../lib/utils"
 
 type Variant = "default" | "secondary" | "outline";
 type Size = "default" | "sm" | "icon" | "link";
@@ -36,7 +37,7 @@ export function Button({
                        }: ButtonProps) {
     return (
         <button
-            className={`${baseStyles} ${variants[variant]} ${sizes[size]} ${className}`}
+            className={cn(baseStyles, variants[variant], sizes[size], className)}
             {...props}
         >
             {children}
