@@ -33,7 +33,7 @@ export function PreviousProjects() {
     const { t } = useTranslation();
     const [api, setApi] = useState<CarouselApi>();
     const [currentSnap, setCurrentSnap] = useState(0);
-    const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 0);
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
     const onSelect = useCallback((carouselApi: CarouselApi) => {
         if (!carouselApi) return;
@@ -52,63 +52,52 @@ export function PreviousProjects() {
     }, [api, onSelect]);
 
     useEffect(() => {
-        if (typeof window === 'undefined') return;
-
-        setWindowWidth(window.innerWidth);
         const handleResize = () => setWindowWidth(window.innerWidth);
         window.addEventListener("resize", handleResize);
         return () => window.removeEventListener("resize", handleResize);
     }, []);
 
-    const [isMounted, setIsMounted] = useState(false);
-    useEffect(() => {
-        setIsMounted(true);
-        if (api) {
-            setTimeout(() => api.reInit(), 100);
-        }
-    }, [api]);
-
     return (
-        <div>
+        <>
             <h2 className="text-xl font-semibold mb-2">{t("recent-projects.title")}</h2>
+
             <Carousel
                 setApi={setApi}
                 opts={{
                     align: "start",
                     slidesToScroll: 1,
                 }}
-                className="relative"
             >
-                <CarouselContent>
+                <CarouselContent className="pb-4">
                     {displayedProjects.map((proj, index) => (
                         <CarouselItem
                             key={index}
-                            className="pb-4 md:basis-1/2"
+                            className="md:basis-1/2"
                         >
-                            <Link
-                                to={proj.to}
-                                className="group flex flex-col gap-2 border rounded-xl p-4 shadow-sm cursor-pointer h-full"
-                            >
-                                <img
-                                    src={proj.image}
-                                    alt={t(proj.titleKey)}
-                                    loading="lazy"
-                                    className="w-full aspect-2/1 rounded-lg object-cover"
-                                />
-                                <h3 className="group-hover:underline font-medium leading-none tracking-tight">
-                                    {t(proj.titleKey)}
-                                </h3>
-                                <p className="text-sm text-muted-foreground">
-                                    {t(proj.descKey)}
-                                </p>
-                            </Link>
+                            <article className="p-px h-full">
+                                <Link
+                                    to={proj.to}
+                                    className="group flex flex-col gap-2 border rounded-xl p-4 shadow-sm cursor-pointer h-full"
+                                >
+                                    <img
+                                        src={proj.image}
+                                        alt={t(proj.titleKey)}
+                                        className="w-full aspect-2/1 rounded-lg object-cover"
+                                    />
+                                    <h3 className="group-hover:underline font-medium leading-none tracking-tight">
+                                        {t(proj.titleKey)}
+                                    </h3>
+                                    <p className="text-sm text-muted-foreground">
+                                        {t(proj.descKey)}
+                                    </p>
+                                </Link>
+                            </article>
                         </CarouselItem>
                     ))}
                 </CarouselContent>
-                <div className={isMounted ? '' : 'invisible'}>
-                    <CarouselPrevious/>
-                    <CarouselNext/>
-                </div>
+                <CarouselPrevious/>
+                <CarouselNext/>
+
                 <div className="flex justify-center gap-2">
                     {projects.map((_, index) => {
                         const isActive = index >= currentSnap && index < currentSnap + (windowWidth >= 768 ? 2 : 1);
@@ -123,6 +112,6 @@ export function PreviousProjects() {
                     })}
                 </div>
             </Carousel>
-        </div>
+        </>
     );
 }

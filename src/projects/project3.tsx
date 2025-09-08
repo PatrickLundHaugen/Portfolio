@@ -42,7 +42,7 @@ export function Project3() {
                 <div className="w-full px-2 md:px-8 [&_img]:aspect-[2/1] [&_img]:rounded-lg [&_img]:object-contain [&_img]:border [&_img]:bg-white">
                     <Carousel
                         opts={{ loop: true }}
-                        plugins={[Autoplay({delay: 5000, stopOnInteraction: false,}),]}
+                        plugins={[Autoplay({delay: 3000, stopOnInteraction: false,}),]}
                         setApi={setApi}>
                         <CarouselContent>
                             {images.map((img, index) => (
