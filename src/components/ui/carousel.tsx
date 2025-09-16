@@ -1,20 +1,19 @@
 "use client"
 
-import * as React from "react"
+import React from "react"
 import useEmblaCarousel, { type UseEmblaCarouselType } from "embla-carousel-react"
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import { cn } from "../../lib/utils"
+import { cn } from "@/lib/utils"
 import { Button } from "./button"
 
-type CarouselApi = UseEmblaCarouselType[1]
-type UseCarouselParameters = Parameters<typeof useEmblaCarousel>
-type CarouselOptions = UseCarouselParameters[0]
-type CarouselPlugin = UseCarouselParameters[1]
+export type CarouselApi = UseEmblaCarouselType[1]
 
 type CarouselProps = {
-    opts?: CarouselOptions
-    plugins?: CarouselPlugin
+    opts?: Parameters<typeof useEmblaCarousel>[0]
+    plugins?: Parameters<typeof useEmblaCarousel>[1]
     setApi?: (api: CarouselApi) => void
+    className?: string
+    children?: React.ReactNode
 }
 
 type CarouselContextProps = {
@@ -29,24 +28,15 @@ type CarouselContextProps = {
 const CarouselContext = React.createContext<CarouselContextProps | null>(null)
 
 function useCarousel() {
-    const context = React.useContext(CarouselContext)
-    if (!context) throw new Error("useCarousel must be used within a <Carousel />")
-    return context
+    return React.useContext(CarouselContext)!
 }
 
-function Carousel({
-                      opts,
-                      setApi,
-                      plugins,
-                      className,
-                      children,
-                      ...props
-                  }: React.ComponentProps<"div"> & CarouselProps) {
+export function Carousel({ opts, plugins, setApi, className, children, ...props }: CarouselProps & React.ComponentProps<"div">) {
     const [carouselRef, api] = useEmblaCarousel(opts, plugins)
     const [canScrollPrev, setCanScrollPrev] = React.useState(false)
     const [canScrollNext, setCanScrollNext] = React.useState(false)
 
-    const onSelect = React.useCallback((api: CarouselApi) => {
+    const onSelect = React.useCallback((api?: CarouselApi) => {
         if (!api) return
         setCanScrollPrev(api.canScrollPrev())
         setCanScrollNext(api.canScrollNext())
@@ -57,7 +47,7 @@ function Carousel({
 
     React.useEffect(() => {
         if (!api) return
-        if (setApi) setApi(api)
+        setApi?.(api)
 
         onSelect(api)
 
@@ -71,73 +61,41 @@ function Carousel({
     }, [api, setApi, onSelect])
 
     return (
-        <CarouselContext.Provider
-            value={{
-                carouselRef,
-                api,
-                opts,
-                scrollPrev,
-                scrollNext,
-                canScrollPrev,
-                canScrollNext,
-            }}
-        >
-            <div
-                className={cn("relative", className)}
-                role="region"
-                aria-roledescription="carousel"
-                data-slot="carousel"
-                {...props}
-            >
+        <CarouselContext.Provider value={{ carouselRef, api, scrollPrev, scrollNext, canScrollPrev, canScrollNext }}>
+            <div className={cn("relative", className)} {...props}>
                 {children}
             </div>
         </CarouselContext.Provider>
     )
 }
 
-function CarouselContent({ className, ...props }: React.ComponentProps<"div">) {
+export function CarouselContent({ className, ...props }: React.ComponentProps<"div">) {
     const { carouselRef } = useCarousel()
 
     return (
-        <div
-            ref={carouselRef}
-            className="overflow-hidden"
-            data-slot="carousel-content"
-        >
-            <div className={cn("flex -ml-4", className)} {...props}/>
+        <div ref={carouselRef} className={cn("overflow-hidden", className)}>
+            <div className={cn("flex -ml-4", className)} {...props} />
         </div>
     )
 }
 
-function CarouselItem({ className, ...props }: React.ComponentProps<"div">) {
+export function CarouselItem({ className, ...props }: React.ComponentProps<"div">) {
     return (
-        <div
-            role="group"
-            aria-roledescription="slide"
-            data-slot="carousel-item"
-            className={cn("min-w-0 shrink-0 grow-0 basis-full pl-4", className)}
-            {...props}
-        />
+        <div className={cn("min-w-0 shrink-0 grow-0 basis-full pl-4", className)} {...props} />
     )
 }
 
-function CarouselPrevious({
-                              className,
-                              variant = "outline",
-                              size = "icon",
-                              ...props
-                          }: React.ComponentProps<typeof Button>) {
+export function CarouselPrevious({ className, ...props }: React.ComponentProps<typeof Button>) {
     const { scrollPrev, canScrollPrev } = useCarousel()
 
     if (!canScrollPrev) return null
 
     return (
         <Button
-            data-slot="carousel-previous"
-            variant={variant}
-            size={size}
-            className={cn("absolute size-8 rounded-full top-1/2 left-4 md:-left-10 -translate-y-1/2", className)}
             onClick={scrollPrev}
+            variant="outline"
+            size="icon"
+            className={cn("absolute size-8 rounded-full top-1/2 left-4 md:-left-10 -translate-y-1/2", className)}
             {...props}
         >
             <IoIosArrowBack />
@@ -146,36 +104,21 @@ function CarouselPrevious({
     )
 }
 
-function CarouselNext({
-                          className,
-                          variant = "outline",
-                          size = "icon",
-                          ...props
-                      }: React.ComponentProps<typeof Button>) {
+export function CarouselNext({ className, ...props }: React.ComponentProps<typeof Button>) {
     const { scrollNext, canScrollNext } = useCarousel()
 
     if (!canScrollNext) return null
 
     return (
         <Button
-            data-slot="carousel-next"
-            variant={variant}
-            size={size}
-            className={cn("absolute size-8 rounded-full top-1/2 right-4 md:-right-10 -translate-y-1/2", className)}
             onClick={scrollNext}
+            variant="outline"
+            size="icon"
+            className={cn("absolute size-8 rounded-full top-1/2 right-4 md:-right-10 -translate-y-1/2", className)}
             {...props}
         >
             <IoIosArrowForward />
             <span className="sr-only">Next slide</span>
         </Button>
     )
-}
-
-export {
-    type CarouselApi,
-    Carousel,
-    CarouselContent,
-    CarouselItem,
-    CarouselPrevious,
-    CarouselNext,
 }

@@ -9,6 +9,7 @@ import { Project3 } from "./projects/project3";
 import { ScrollToTop } from "./components/scroll-to-top";
 
 export function App() {
+
     return (
         <div className="flex flex-col justify-center max-w-180 px-4 m-auto">
             <Nav/>

@@ -60,7 +60,6 @@ export function PreviousProjects() {
     return (
         <>
             <h2 className="text-xl font-semibold mb-2">{t("recent-projects.title")}</h2>
-
             <Carousel
                 setApi={setApi}
                 opts={{
@@ -97,7 +96,6 @@ export function PreviousProjects() {
                 </CarouselContent>
                 <CarouselPrevious/>
                 <CarouselNext/>
-
                 <div className="flex justify-center gap-2">
                     {projects.map((_, index) => {
                         const isActive = index >= currentSnap && index < currentSnap + (windowWidth >= 768 ? 2 : 1);
