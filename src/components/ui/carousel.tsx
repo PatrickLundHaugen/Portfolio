@@ -95,7 +95,7 @@ export function CarouselPrevious({ className, ...props }: React.ComponentProps<t
             onClick={scrollPrev}
             variant="outline"
             size="icon"
-            className={cn("absolute size-8 rounded-full top-1/2 left-4 md:-left-10 -translate-y-1/2", className)}
+            className={cn("md:absolute size-8 rounded-full md:top-1/2 left-4 md:-left-10 md:-translate-y-1/2", className)}
             {...props}
         >
             <IoIosArrowBack />
@@ -114,7 +114,7 @@ export function CarouselNext({ className, ...props }: React.ComponentProps<typeo
             onClick={scrollNext}
             variant="outline"
             size="icon"
-            className={cn("absolute size-8 rounded-full top-1/2 right-4 md:-right-10 -translate-y-1/2", className)}
+            className={cn("md:absolute size-8 rounded-full md:top-1/2 right-4 md:-right-10 md:-translate-y-1/2", className)}
             {...props}
         >
             <IoIosArrowForward />

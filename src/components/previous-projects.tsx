@@ -67,7 +67,7 @@ export function PreviousProjects() {
                     slidesToScroll: 1,
                 }}
             >
-                <CarouselContent className="pb-4">
+                <CarouselContent>
                     {displayedProjects.map((proj, index) => (
                         <CarouselItem
                             key={index}
@@ -94,20 +94,24 @@ export function PreviousProjects() {
                         </CarouselItem>
                     ))}
                 </CarouselContent>
-                <CarouselPrevious/>
-                <CarouselNext/>
-                <div className="flex justify-center gap-2">
-                    {projects.map((_, index) => {
-                        const isActive = index >= currentSnap && index < currentSnap + (windowWidth >= 768 ? 2 : 1);
-                        return (
-                            <div
-                                key={index}
-                                className={`size-2 rounded-full transition-all ${
-                                    isActive ? "bg-muted-foreground" : "bg-muted"
-                                }`}
-                            />
-                        );
-                    })}
+                <div>
+                    <div className="grid grid-cols-2 pt-2">
+                        <CarouselPrevious className="col-1 justify-self-start"/>
+                        <CarouselNext className="col-2 justify-self-end"/>
+                    </div>
+                    <div className="flex justify-center gap-2">
+                        {projects.map((_, index) => {
+                            const isActive = index >= currentSnap && index < currentSnap + (windowWidth >= 768 ? 2 : 1);
+                            return (
+                                <div
+                                    key={index}
+                                    className={`size-2 rounded-full transition-all ${
+                                        isActive ? "bg-muted-foreground" : "bg-muted"
+                                    }`}
+                                />
+                            );
+                        })}
+                    </div>
                 </div>
             </Carousel>
         </>
