@@ -15,12 +15,17 @@ export function Contact(): JSX.Element {
     const [status, setStatus] = useState<string | null>(null);
     const [toast, setToast] = useState<string | null>(null);
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
-        setFormData((prev) => ({ ...prev, [name]: value }));
+        setFormData(prev => ({ ...prev, [name]: value }));
     };
 
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
+    function showToast(message: string, type: "success" | "error" = "success") {
+        setToast(`${type}:${message}`);
+        setTimeout(() => setToast(null), 5500);
+    }
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setStatus("Sending...");
 
@@ -34,23 +39,21 @@ export function Contact(): JSX.Element {
             const data: { message?: string } = await res.json();
 
             if (!res.ok) {
-                setStatus(`Error: ${data.message || "Failed to send message"}`);
-                showToast(`Error: ${data.message || "Failed to send message"}`);
+                const errorMsg = data.message || "Failed to send message";
+                setStatus(`Error: ${errorMsg}`);
+                showToast(errorMsg, "error");
                 return;
             }
 
             setStatus(t("navbar.contact.toast"));
-            showToast(t("navbar.contact.toast"));
+            showToast(t("navbar.contact.toast"), "success");
+
             setFormData({ name: "", email: "", message: "" });
             setOpen(false);
         } catch (err) {
-            if (err instanceof Error) {
-                setStatus(`Error: ${err.message}`);
-                showToast(`Error: ${err.message}`);
-            } else {
-                setStatus("An unexpected error occurred.");
-                showToast("An unexpected error occurred.");
-            }
+            const errorMsg = err instanceof Error ? err.message : "An unexpected error occurred.";
+            setStatus(`Error: ${errorMsg}`);
+            showToast(errorMsg, "error");
         }
     };
 
@@ -59,11 +62,6 @@ export function Contact(): JSX.Element {
         setFormData({ name: "", email: "", message: "" });
         setStatus(null);
     };
-
-    function showToast(message: string) {
-        setToast(message);
-        setTimeout(() => setToast(null), 5500);
-    }
 
     return (
         <>
@@ -76,7 +74,6 @@ export function Contact(): JSX.Element {
             <Button
                 onClick={() => setOpen(true)}
                 variant="outline"
-                disabled
             >
                 {t("navbar.contact.title")}
             </Button>
