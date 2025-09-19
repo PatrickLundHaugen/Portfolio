@@ -95,7 +95,7 @@ export function PreviousProjects() {
                     ))}
                 </CarouselContent>
                 <div>
-                    <div className="grid grid-cols-2 pt-2">
+                    <div className="grid grid-cols-2 pt-4">
                         <CarouselPrevious className="col-1 justify-self-start"/>
                         <CarouselNext className="col-2 justify-self-end"/>
                     </div>
