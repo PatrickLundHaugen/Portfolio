@@ -1,6 +1,8 @@
 import React, { useState, JSX } from "react";
 import { useTranslation } from "react-i18next";
 import { Button } from "./ui/button.tsx";
+import { FaCheck, FaTimes } from 'react-icons/fa';
+
 
 interface FormData {
     name: string;
@@ -21,8 +23,8 @@ export function Contact(): JSX.Element {
     };
 
     function showToast(message: string, type: "success" | "error" = "success") {
-        setToast(`${type}:${message}`);
-        setTimeout(() => setToast(null), 5500);
+        setToast(`${type}: ${message}`);
+        setTimeout(() => setToast(null), 5000);
     }
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -66,8 +68,16 @@ export function Contact(): JSX.Element {
     return (
         <>
             {toast && (
-                <div className="fixed top-5 left-1/2 -translate-x-1/2 w-full max-w-9/10 sm:max-w-sm bg-card border border-input rounded-md p-4 shadow-lg z-50">
-                    <p className="text-sm leading-none">{toast}</p>
+                <div className="fixed top-5 left-1/2 -translate-x-1/2 w-full max-w-9/10 sm:max-w-sm border rounded-md p-4 shadow-lg z-50 bg-card">
+                    <p className="flex items-center gap-3 text-sm leading-none">
+                        <span className={`p-1 rounded-full text-primary-foreground
+                        ${toast.startsWith("error:") ? "bg-red-500" : "bg-green-500"}`}
+                        >
+                            {toast.startsWith("error:") ? <FaTimes /> : <FaCheck />}
+                        </span>
+
+                        <span>{toast.replace(/^(success:|error:)/, "")}</span>
+                    </p>
                 </div>
             )}
 
