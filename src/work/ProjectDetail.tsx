@@ -256,7 +256,7 @@ export default function ProjectDetail() {
                 >
                     <Button
                         size="icon"
-                        className="fixed top-4 right-4"
+                        className="fixed top-4 right-4 z-50"
                         onClick={closeFullscreen}
                         aria-label="Close Fullscreen"
                     >
