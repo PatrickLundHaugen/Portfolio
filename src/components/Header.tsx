@@ -24,6 +24,7 @@ export function Nav() {
                 variant="outline"
                 size="icon"
                 aria-label="Switch language"
+                className="text-xs"
             >
                 {i18n.language === "en" ? "NO" : "EN"}
             </Button>
