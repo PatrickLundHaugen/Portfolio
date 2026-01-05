@@ -6,10 +6,10 @@ export default function NotFound() {
     const { t } = useTranslation();
 
     return (
-        <div className="flex flex-col justify-center items-center gap-4 py-32">
+        <div className="flex flex-col justify-center items-center gap-4 h-full">
             <h1 className="text-3xl font-semibold tracking-tight">{t("404.title")}</h1>
             <Link to="/" className="inline-flex gap-1 items-center rounded-md cursor-pointer select-none hover:underline">
-                <IoIosArrowBack /> {t("404.link")}
+                <IoIosArrowBack /> {t("404.backLink")}
             </Link>
         </div>
     );

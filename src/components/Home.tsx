@@ -1,30 +1,44 @@
 import { useTranslation } from "react-i18next";
-import { motion } from "motion/react";
+import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
 
-import Tabs from "@/components/Tabs";
-import RecentProjects from "@/components/RecentProjects";
+import Accordion from "@/components/Accordion";
+import Footer from "@/components/Footer";
 
-export default function About() {
+export default function Home() {
     const { t } = useTranslation();
 
+    useGSAP(() => {
+        gsap.from(".animate-left-col > *", {
+            duration: 0.5,
+            x: "-50%",
+            autoAlpha: 0,
+            stagger: 0.05,
+            ease: "power4.out",
+        });
+    });
+
     return (
-        <>
-            <motion.section
-                className="space-y-2"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-            >
-                <h1 className="text-2xl font-bold">{t("home.greeting")}</h1>
-                <p className="text-6xl font-semibold tracking-tight leading-none">{t("home.about")}</p>
-            </motion.section>
-            <section>
-                <Tabs />
-            </section>
-            <section>
-                <RecentProjects />
-            </section>
-        </>
-    )
+        <section className="h-full flex flex-col justify-end md:grid md:grid-cols-2 md:items-end gap-8 lg:gap-32">
+            <div className="animate-left-col flex flex-col">
+                <p className="text-xs md:text-sm font-medium tracking-tight uppercase">
+                    {t("home.subheading")}
+                </p>
+                <div className="flex flex-col sm:flex-row sm:gap-x-2 text-3xl lg:text-4xl font-bold tracking-tight uppercase">
+                    <span>{t("home.firstName")}</span>
+                    <span>{t("home.lastName")}</span>
+                </div>
+                <p className="md:text-lg font-semibold tracking-tight leading-tight mt-4">
+                    {t("home.about")}
+                </p>
+                <Footer />
+            </div>
+            <div className="w-full lg:justify-self-end">
+                <p className="text-xs md:text-sm font-medium tracking-tight uppercase mb-3">
+                    {t("work.recentWorkTitle")}
+                </p>
+                <Accordion />
+            </div>
+        </section>
+    );
 }

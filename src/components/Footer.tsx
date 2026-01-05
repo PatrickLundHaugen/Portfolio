@@ -1,13 +1,25 @@
 import { useTranslation } from "react-i18next";
-import { IconLinks } from "./icon-links.tsx";
+import { RiArrowRightUpLine } from "react-icons/ri";
 
-export function Footer() {
+import Button from "@/components/ui/Button";
+
+export default function Footer() {
     const { t } = useTranslation();
 
     return (
-        <footer className="flex justify-between align-center py-16 text-muted-foreground">
-            <p className="text-sm">{t("footer.author")}</p>
-            <IconLinks />
+        <footer className="flex flex-wrap gap-4 mt-4 lg:mt-8 text-xs md:text-sm">
+            <Button asChild variant="link" size="link">
+                <a href="https://www.linkedin.com/in/patrick-lund-haugen-6776092ab/" target="_blank" rel="noopener noreferrer">
+                    {t("footer.linkedin")}
+                    <RiArrowRightUpLine />
+                </a>
+            </Button>
+            <Button asChild variant="link" size="link">
+                <a href="https://github.com/PatrickLundHaugen" target="_blank" rel="noopener noreferrer">
+                    {t("footer.github")}
+                    <RiArrowRightUpLine />
+                </a>
+            </Button>
         </footer>
     )
 }

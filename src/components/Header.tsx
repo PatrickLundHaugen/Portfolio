@@ -1,33 +1,69 @@
-import { ModeToggle } from "../dark-mode/mode-toggle";
+import { useRef } from "react";
+import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { useState } from "react";
-import { Contact } from "./contact";
-import { Button } from "./ui/button";
+import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
+import { SplitText } from "gsap/SplitText";
 
-export function Nav() {
-    const { i18n } = useTranslation();
-    const [currentLanguage, setCurrentLanguage] = useState(i18n.language);
-    const handleLanguageToggle = () => {
-    const newLanguage = currentLanguage === "no" ? "en" : "no";
-    setCurrentLanguage(newLanguage);
-    i18n.changeLanguage(newLanguage);
+import Logo from "/src/assets/logo/logo.svg?react";
+import ToggleLanguage from "@/languages/ToggleLanguage";
+import Button from "@/components/ui/Button";
+
+gsap.registerPlugin(SplitText);
+
+export default function Header() {
+    const { t, i18n } = useTranslation();
+    const scope = useRef<HTMLElement>(null);
+    const animation = useRef<gsap.core.Tween | null>(null);
+
+    useGSAP(() => {
+        if (!scope.current) return;
+
+        gsap.from(scope.current, {
+            y: "-100%",
+            autoAlpha: 0,
+            duration: 0.5,
+            ease: "power4.out",
+        });
+    }, { scope });
+
+    useGSAP(() => {
+        const split = new SplitText(".contact-text-rotation", {
+            type: "chars"
+        });
+
+        animation.current = gsap.to(split.chars, {
+            rotationY: 360,
+            duration: 0.5,
+            stagger: 0.05,
+            ease: "power4.out",
+            paused: true,
+        });
+    }, { scope, dependencies: [i18n.language] });
+
+    const handleMouseEnter = () => {
+        animation.current?.restart();
     };
 
     return (
-        <nav className="inline-flex justify-end gap-2 py-4">
-            <Contact />
-
-            <ModeToggle />
-
-            <Button
-                onClick={handleLanguageToggle}
-                variant="outline"
-                size="icon"
-                aria-label="Switch language"
-                className="text-xs"
-            >
-                {i18n.language === "en" ? "NO" : "EN"}
-            </Button>
-        </nav>
+        <header ref={scope} className="inline-flex flex-wrap justify-between">
+            <Link to="/" aria-label="Home">
+                <Logo className="size-12 text-primary shrink-0" />
+            </Link>
+            <div className="inline-flex gap-2">
+                <ToggleLanguage />
+                <Button asChild className="text-lg gap-0">
+                    <a
+                        key={i18n.language}
+                        href="mailto:patricklundhaugen@gmail.com"
+                        onMouseEnter={handleMouseEnter}
+                        className="contact-text-rotation"
+                        aria-label={t("header.contact")}
+                    >
+                        {t("header.contact")}
+                    </a>
+                </Button>
+            </div>
+        </header>
     );
 }

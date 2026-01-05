@@ -1,36 +1,35 @@
-import { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
-import './App.css';
-import { App } from './App';
-import { ThemeProvider } from './dark-mode/theme-provider';
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
-import en_home from './languages/en.json';
-import no_home from './languages/no.json';
 
-const savedLanguage = localStorage.getItem('language') || 'no';
+import "@/App.css";
+import App from "@/App";
+import en from "@/languages/en.json";
+import no from "@/languages/no.json";
+
+const savedLanguage = localStorage.getItem("i18nextLng") || "no";
 
 i18n.use(initReactI18next).init({
-    resources: {
-        en: {translation: en_home},
-        no: {translation: no_home}
-    },
-    lng: savedLanguage,
-    fallbackLng: "en",
-    interpolation: { escapeValue: false },
-});
+        resources: {
+            en: { translation: en },
+            no: { translation: no }
+        },
+        lng: savedLanguage,
+        fallbackLng: "en",
+        interpolation: { escapeValue: false },
+    })
+    .catch(console.error);
 
-i18n.on('languageChanged', (lng) => {
-    localStorage.setItem('language', lng);
+i18n.on("languageChanged", (language) => {
+    localStorage.setItem("i18nextLng", language);
 });
 
 createRoot(document.getElementById("root")!).render(
     <StrictMode>
         <BrowserRouter>
-            <ThemeProvider defaultTheme="light" storageKey="color-theme">
-                <App />
-            </ThemeProvider>
+            <App />
         </BrowserRouter>
     </StrictMode>
 );

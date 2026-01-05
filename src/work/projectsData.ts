@@ -1,27 +1,42 @@
-import watchd from "@/images/watchd-home.webp";
-import dashboard from "@/images/dashboard.webp";
-import imageGenerator from "@/images/image-generator.webp";
+import watchd1 from "@/assets/images/watchd-home.webp";
+import watchd2 from "@/assets/images/watchd-search.webp";
+import watchd3 from "@/assets/images/watchd-movie.webp";
+import watchd4 from "@/assets/images/watchd-profile.webp";
+import dashboard from "@/assets/images/dashboard.webp";
+import imageGenerator from "@/assets/images/image-generator.webp";
 
-export const projects = [
+export interface Project {
+    id: string;
+    to: string;
+    image: string;
+    images?: string[];
+    productUrl?: string;
+    githubUrl?: string;
+}
+
+export const projects: Project[] = [
     {
-        to: "/watchd",
-        image: watchd,
-        titleKey: "work.watchd.title",
-        descKey: "work.watchd.text.section1.text1",
-        year: "work.watchd.year"
+        id: "watchd",
+        to: "/project/watchd",
+        image: watchd1,
+        images: [watchd1, watchd2, watchd3, watchd4],
+        productUrl: "https://watchd-psi.vercel.app/",
+        githubUrl: "https://github.com/PatrickLundHaugen/Watchd",
     },
     {
-        to: "/dashboard",
+        id: "dashboard",
+        to: "/project/dashboard",
         image: dashboard,
-        titleKey: "work.dashboard.title",
-        descKey: "work.dashboard.text.section1.text1",
-        year: "work.dashboard.year"
+        images: [dashboard],
+        productUrl: "https://dashboard-patricklh.vercel.app/",
+        githubUrl: "https://github.com/PatrickLundHaugen/dashboard",
     },
     {
-        to: "/imageGenerator",
+        id: "imageGenerator",
+        to: "/project/imageGenerator",
         image: imageGenerator,
-        titleKey: "work.image-generator.title",
-        descKey: "work.image-generator.text.section1.text1",
-        year: "work.image-generator.year"
+        images: [imageGenerator],
+        productUrl: "https://image-generator-kohl-one.vercel.app/",
+        githubUrl: "https://github.com/PatrickLundHaugen/Image-Generator",
     }
 ];

@@ -1,9 +1,10 @@
 import React from "react"
 import { Slot } from "@radix-ui/react-slot"
-import { cn } from "@/lib/utils"
 
-type ButtonVariant = "default" | "secondary" | "outline"
-type ButtonSize = "default" | "sm" | "icon" | "link"
+import cn from "@/lib/utils"
+
+type ButtonVariant = "default" | "outline" | "link"
+type ButtonSize = "default" | "icon" | "link"
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     variant?: ButtonVariant
@@ -13,19 +14,18 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const variants: Record<ButtonVariant, string> = {
-    default: "bg-primary text-primary-foreground shadow-xs hover:bg-primary/90",
-    secondary: "bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80",
-    outline: "border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50"
+    default: "bg-primary hover:bg-primary/90 text-neutral-800",
+    outline: "bg-neutral-50 border hover:bg-neutral-300",
+    link: "tracking-wider hover:underline"
 }
 
 const sizes: Record<ButtonSize, string> = {
-    default: "h-9 px-4 py-2",
-    sm: "h-8 px-3",
-    icon: "size-9",
-    link: "py-1 px-3 text-xs gap-1",
+    default: "px-6",
+    icon: "size-12",
+    link: "p-0",
 }
 
-export function Button({
+export default function Button({
                            variant = "default",
                            size = "default",
                            asChild = false,
@@ -35,7 +35,10 @@ export function Button({
     const Comp = asChild ? Slot : "button"
     return (
         <Comp
-            className={cn("inline-flex items-center justify-center whitespace-nowrap text-sm rounded-md font-medium cursor-pointer transition-all disabled:pointer-events-none disabled:opacity-50 shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive", variants[variant], sizes[size], className)}
+            className={cn("inline-flex items-center justify-center gap-1 whitespace-nowrap rounded-full font-medium tracking-tight cursor-pointer uppercase select-none transition-[color,background-color,border-color,opacity] disabled:pointer-events-none disabled:opacity-50",
+                variants[variant],
+                sizes[size],
+                className)}
             {...props}
         />
     )

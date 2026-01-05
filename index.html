@@ -1,20 +1,30 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="view-transition" content="same-origin" />
-    <meta name="description" content="This is the portfolio of Patrick Lund Haugen" />
-    <meta name="google-site-verification" content="6_iiH1IyqHLA0vLUGB94VvErZShrvdXt8aBT6B5gAsU" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <link rel="shortcut icon" href="/favicon.ico">
-    <title>Patrick Lund Haugen</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="view-transition" content="same-origin" />
+        <meta name="description" content="This is the portfolio of Patrick Lund Haugen" />
+        <meta name="google-site-verification" content="6_iiH1IyqHLA0vLUGB94VvErZShrvdXt8aBT6B5gAsU" />
+        <link rel="icon" type="image/x-icon" href="/logo/favicon.ico">
+        <link rel="icon" type="image/svg+xml" href="/logo/favicon.svg">
+        <link rel="apple-touch-icon" href="/logo/apple-touch-icon.png">
+        <link rel="manifest" href="/logo/site.webmanifest">
+        <title>Patrick Lund Haugen | Web developer</title>
+    </head>
+    <body>
+        <div id="root"></div>
+        <script type="module" src="/src/main.tsx"></script>
+        <script>
+            let docTitle = document.title;
+
+            window.addEventListener("blur", () => {
+                document.title = "Wait, don't leave!";
+            });
+
+            window.addEventListener("focus", () => {
+                document.title = docTitle;
+            });
+        </script>
+    </body>
 </html>

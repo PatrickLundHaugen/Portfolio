@@ -1,28 +1,23 @@
 import { Routes, Route } from "react-router-dom";
 
-import { Home } from "./home";
-import { Nav } from "./components/nav";
-import { Footer } from "./components/footer";
-import { Project1 } from "./projects/project1";
-import { Project2 } from "./projects/project2";
-import { Project3 } from "./projects/project3";
-import { ScrollToTop } from "./components/scroll-to-top";
+import Home from "@/components/Home";
+import Header from "@/components/Header";
+import ProjectDetail from "@/work/ProjectDetail";
+import NotFound from "@/components/NotFound";
 
-export function App() {
-
+export default function App() {
     return (
-        <div className="flex flex-col justify-center max-w-180 px-4 m-auto">
-            <Nav/>
-            <main className="flex flex-col gap-16">
-                <ScrollToTop />
+        <div className="h-screen flex flex-col gap-4 p-4">
+            <Header/>
+            <main className="flex-1">
                 <Routes>
-                    <Route path="/" element={<Home/>}/>
-                    <Route path="/project1" element={<Project1/>}/>
-                    <Route path="/project2" element={<Project2/>}/>
-                    <Route path="/project3" element={<Project3/>}/>
+                    <Route path="/" element={<Home/>} />
+
+                    <Route path="/project/:projectId" element={<ProjectDetail/>} />
+
+                    <Route path="*" element={<NotFound />} />
                 </Routes>
             </main>
-            <Footer/>
         </div>
     )
 }

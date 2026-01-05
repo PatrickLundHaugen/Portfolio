@@ -3,8 +3,9 @@
 import React from "react"
 import useEmblaCarousel, { type UseEmblaCarouselType } from "embla-carousel-react"
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import { cn } from "@/lib/utils"
-import { Button } from "./button"
+
+import cn from "@/lib/utils"
+import Button from "@/components/ui/Button"
 
 export type CarouselApi = UseEmblaCarouselType[1]
 
@@ -81,24 +82,22 @@ export function CarouselContent({ className, ...props }: React.ComponentProps<"d
 
 export function CarouselItem({ className, ...props }: React.ComponentProps<"div">) {
     return (
-        <div className={cn("min-w-0 shrink-0 grow-0 basis-full pl-4", className)} {...props} />
+        <div className={cn("shrink-0 basis-full pl-4", className)} {...props} />
     )
 }
 
 export function CarouselPrevious({ className, ...props }: React.ComponentProps<typeof Button>) {
     const { scrollPrev, canScrollPrev } = useCarousel()
 
-    if (!canScrollPrev) return null
-
     return (
         <Button
             onClick={scrollPrev}
-            variant="outline"
             size="icon"
-            className={cn("md:absolute size-8 rounded-full md:top-1/2 left-4 md:-left-10 md:-translate-y-1/2", className)}
+            disabled={!canScrollPrev}
+            className={cn("absolute top-1/2 left-6 -translate-y-1/2", className)}
             {...props}
         >
-            <IoIosArrowBack />
+            <IoIosArrowBack className="size-6" />
             <span className="sr-only">Previous slide</span>
         </Button>
     )
@@ -107,17 +106,15 @@ export function CarouselPrevious({ className, ...props }: React.ComponentProps<t
 export function CarouselNext({ className, ...props }: React.ComponentProps<typeof Button>) {
     const { scrollNext, canScrollNext } = useCarousel()
 
-    if (!canScrollNext) return null
-
     return (
         <Button
             onClick={scrollNext}
-            variant="outline"
             size="icon"
-            className={cn("md:absolute size-8 rounded-full md:top-1/2 right-4 md:-right-10 md:-translate-y-1/2", className)}
+            disabled={!canScrollNext}
+            className={cn("absolute top-1/2 right-6 -translate-y-1/2", className)}
             {...props}
         >
-            <IoIosArrowForward />
+            <IoIosArrowForward className="size-6" />
             <span className="sr-only">Next slide</span>
         </Button>
     )
