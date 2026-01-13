@@ -170,7 +170,9 @@ export default function ProjectDetail() {
                                         <img
                                             src={project.images[0]}
                                             alt={t(`work.projects.${project.id}.title`)}
-                                            className="w-full aspect-2/1 object-cover transition-transform duration-250 scale-110 group-hover:scale-100"
+                                            loading="lazy"
+                                            decoding="async"
+                                            className="w-full aspect-video object-cover transition-transform duration-250 scale-110 group-hover:scale-100"
                                         />
                                     </div>
                                 </div>
@@ -198,8 +200,10 @@ export default function ProjectDetail() {
                                                         <div className="overflow-hidden rounded-lg">
                                                             <img
                                                                 src={img}
+                                                                loading="lazy"
+                                                                decoding="async"
                                                                 alt={`${t(`work.projects.${project.id}.title`)} - Image ${index + 1}`}
-                                                                className="w-full aspect-2/1 object-cover transition-transform duration-250 scale-110 group-hover:scale-100"
+                                                                className="w-full aspect-video object-cover transition-transform duration-250 scale-110 group-hover:scale-100"
                                                             />
                                                         </div>
                                                     </CarouselItem>
@@ -280,6 +284,8 @@ export default function ProjectDetail() {
                                         <CarouselItem key={index} className="flex items-center justify-center">
                                             <img
                                                 src={img}
+                                                loading="lazy"
+                                                decoding="async"
                                                 alt={`${t(`work.projects.${project.id}.title`)} - Image ${index + 1}`}
                                                 className="rounded-xl object-contain"
                                             />
@@ -293,6 +299,8 @@ export default function ProjectDetail() {
                         ) : (
                             <img
                                 src={project.images[0]}
+                                loading="lazy"
+                                decoding="async"
                                 alt={t(`work.projects.${project.id}.title`)}
                                 className="rounded-xl object-contain"
                             />

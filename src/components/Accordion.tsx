@@ -31,7 +31,7 @@ function AccordionItem({ title, year, content, isOpen, onClick }: ItemProps) {
             >
                 <div className="flex flex-1 items-baseline justify-between ">
                     <span className="md:text-lg font-semibold group-hover:underline animate-title-text">{title}</span>
-                    <span className="text-xs md:text-sm text-neutral-400">{year}</span>
+                    <span className="text-xs md:text-sm text-neutral-500">{year}</span>
                 </div>
                 <IoIosArrowDown
                     className={`size-4 transition-transform ${
@@ -91,6 +91,8 @@ export default function Accordion() {
                                     <img
                                         src={project.image}
                                         alt={t(`work.projects.${project.id}.title`)}
+                                        loading="lazy"
+                                        decoding="async"
                                         className="size-full object-cover transition-transform duration-250 scale-110 hover:scale-100"
                                     />
                                 </div>

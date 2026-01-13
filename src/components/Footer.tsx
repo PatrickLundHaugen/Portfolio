@@ -7,7 +7,7 @@ export default function Footer() {
     const { t } = useTranslation();
 
     return (
-        <footer className="flex flex-wrap gap-4 mt-4 lg:mt-8 text-xs md:text-sm">
+        <footer className="flex flex-wrap gap-4 mt-4 lg:mt-6 text-xs md:text-sm">
             <Button asChild variant="link" size="link">
                 <a href="https://www.linkedin.com/in/patrick-lund-haugen-6776092ab/" target="_blank" rel="noopener noreferrer">
                     {t("footer.linkedin")}
