@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Navigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import Autoplay from "embla-carousel-autoplay";
 import { ArrowUpRight, Maximize, X } from "lucide-react";
@@ -14,7 +14,6 @@ import {
 } from "@/components/ui/Carousel";
 import Button from "@/components/ui/Button";
 import { projects } from "@/work/projectsData";
-import NotFound from "@/components/NotFound";
 
 export default function ProjectDetail() {
     const { t } = useTranslation();
@@ -81,7 +80,7 @@ export default function ProjectDetail() {
     }, [dialogApi]);
 
     if (!project) {
-        return <NotFound />;
+        return <Navigate to="/404" replace />;
     }
 
     const hasMultipleImages = project.images && project.images.length > 1;
