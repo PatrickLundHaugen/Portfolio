@@ -1,9 +1,7 @@
-import { ReactNode, useState, useId, useRef } from "react";
+import { ReactNode, useState, useId } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { ChevronDown, ArrowUpRight } from "lucide-react";
-import { gsap } from "gsap";
-import { useGSAP } from "@gsap/react";
 
 import { projects } from "@/work/projectsData";
 import Button from "@/components/ui/Button";
@@ -14,9 +12,10 @@ interface ItemProps {
     content: ReactNode;
     isOpen: boolean;
     onClick: () => void;
+    index: number;
 }
 
-function AccordionItem({ title, year, content, isOpen, onClick }: ItemProps) {
+function AccordionItem({ title, year, content, isOpen, onClick, index }: ItemProps) {
     const id = useId();
 
     return (
@@ -28,8 +27,13 @@ function AccordionItem({ title, year, content, isOpen, onClick }: ItemProps) {
                 aria-expanded={isOpen}
                 aria-controls={`content-${id}`}
             >
-                <div className="flex flex-1 items-baseline justify-between ">
-                    <span className="md:text-lg font-semibold group-hover:underline animate-title-text">{title}</span>
+                <div className="flex flex-1 items-baseline justify-between">
+                    <span
+                        className="md:text-lg font-semibold group-hover:underline animate-title-text"
+                        style={{ animationDelay: `${index * 100}ms` }}
+                    >
+                        {title}
+                    </span>
                     <span className="text-xs md:text-sm text-neutral-500">{year}</span>
                 </div>
                 <ChevronDown
@@ -58,21 +62,9 @@ function AccordionItem({ title, year, content, isOpen, onClick }: ItemProps) {
 export default function Accordion() {
     const { t } = useTranslation();
     const [openIndex, setOpenIndex] = useState<number | null>(null);
-    const container = useRef<HTMLDivElement>(null);
-
-    useGSAP(() => {
-        gsap.from(".animate-title-text", {
-            y: 16,
-            autoAlpha: 0,
-            duration: 0.5,
-            stagger: 0.1,
-            ease: "power4.out",
-            clearProps: "all"
-        });
-    }, { scope: container });
 
     return (
-        <div ref={container} className="border-y divide-y">
+        <div className="border-y divide-y">
             {projects.map((project, index) => {
                 const content = t(`work.projects.${project.id}.content`, { returnObjects: true }) as (string | { type: string; text: string })[];
                 const description = typeof content[0] === 'string' ? content[0] : '';
@@ -84,6 +76,7 @@ export default function Accordion() {
                         year={t(`work.projects.${project.id}.year`)}
                         isOpen={openIndex === index}
                         onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                        index={index}
                         content={
                             <div className="flex flex-col gap-6">
                                 <div className="aspect-video w-full max-w-2xl self-center rounded-md overflow-hidden">

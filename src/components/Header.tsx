@@ -1,37 +1,53 @@
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { gsap } from "gsap";
-import { useGSAP } from "@gsap/react";
-import { SplitText } from "gsap/SplitText";
 
 import Logo from "/src/assets/logo/logo.svg?react";
 import ToggleLanguage from "@/languages/ToggleLanguage";
 import Button from "@/components/ui/Button";
 
-gsap.registerPlugin(SplitText);
-
 export default function Header() {
     const { t, i18n } = useTranslation();
     const scope = useRef<HTMLElement>(null);
-    const animation = useRef<gsap.core.Tween | null>(null);
+    const animationRef = useRef<{ restart: () => void } | null>(null);
 
-    useGSAP(() => {
-        const split = new SplitText(".contact-text-rotation", {
-            type: "chars"
-        });
+    useEffect(() => {
+        let mounted = true;
 
-        animation.current = gsap.to(split.chars, {
-            rotationY: 360,
-            duration: 0.5,
-            stagger: 0.05,
-            ease: "power4.out",
-            paused: true,
-        });
-    }, { scope, dependencies: [i18n.language] });
+        const loadGSAP = async () => {
+            const [{ gsap }, { SplitText }] = await Promise.all([
+                import("gsap"),
+                import("gsap/SplitText")
+            ]);
+
+            if (!mounted || !scope.current) return;
+
+            gsap.registerPlugin(SplitText);
+
+            const split = new SplitText(".contact-text-rotation", {
+                type: "chars"
+            });
+
+            animationRef.current = gsap.to(split.chars, {
+                rotationY: 360,
+                duration: 0.5,
+                stagger: 0.05,
+                ease: "power4.out",
+                paused: true,
+            });
+        };
+
+        if ("requestIdleCallback" in window) {
+            requestIdleCallback(() => loadGSAP());
+        } else {
+            setTimeout(loadGSAP, 200);
+        }
+
+        return () => { mounted = false; };
+    }, [i18n.language]);
 
     const handleMouseEnter = () => {
-        animation.current?.restart();
+        animationRef.current?.restart();
     };
 
     return (
