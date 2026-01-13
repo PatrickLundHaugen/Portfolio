@@ -10,6 +10,7 @@ export default function Header() {
     const { t, i18n } = useTranslation();
     const scope = useRef<HTMLElement>(null);
     const animationRef = useRef<{ restart: () => void } | null>(null);
+    const splitRef = useRef<{ revert: () => void } | null>(null);
 
     useEffect(() => {
         let mounted = true;
@@ -28,6 +29,8 @@ export default function Header() {
                 type: "chars"
             });
 
+            splitRef.current = split;
+
             animationRef.current = gsap.to(split.chars, {
                 rotationY: 360,
                 duration: 0.5,
@@ -43,7 +46,10 @@ export default function Header() {
             setTimeout(loadGSAP, 200);
         }
 
-        return () => { mounted = false; };
+        return () => {
+            mounted = false;
+            splitRef.current?.revert();
+        };
     }, [i18n.language]);
 
     const handleMouseEnter = () => {
