@@ -63,7 +63,7 @@ export default function Accordion() {
 
     useGSAP(() => {
         gsap.from(".animate-title-text", {
-            y: "50%",
+            y: 16,
             autoAlpha: 0,
             duration: 0.5,
             stagger: 0.1,

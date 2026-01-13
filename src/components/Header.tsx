@@ -20,7 +20,7 @@ export default function Header() {
         if (!scope.current) return;
 
         gsap.from(scope.current, {
-            y: "-100%",
+            y: -48,
             autoAlpha: 0,
             duration: 0.5,
             ease: "power4.out",

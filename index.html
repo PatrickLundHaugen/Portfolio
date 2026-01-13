@@ -1,37 +1,38 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" media="print" onload="this.media='all'">
-        <noscript>
-            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap">
-        </noscript>
-        <meta name="view-transition" content="same-origin" />
-        <meta name="description" content="This is the portfolio of Patrick Lund Haugen" />
-        <link rel="icon" type="image/x-icon" href="/logo/favicon.ico">
-        <link rel="icon" type="image/svg+xml" href="/logo/favicon.svg">
-        <link rel="apple-touch-icon" href="/logo/apple-touch-icon.png">
-        <link rel="manifest" href="/logo/site.webmanifest">
-        <meta name="theme-color" content="#fafafa">
-        <title>Patrick Lund Haugen | Web developer</title>
-    </head>
-    <body>
-        <div id="root"></div>
-        <script type="module" src="/src/main.tsx"></script>
-        <script>
-            let docTitle = document.title;
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap">
+    </noscript>
+    <meta name="view-transition" content="same-origin" />
+    <meta name="description" content="This is the portfolio of Patrick Lund Haugen" />
+    <meta name="google-site-verification" content="6_iiH1IyqHLA0vLUGB94VvErZShrvdXt8aBT6B5gAsU" />
+    <link rel="icon" type="image/x-icon" href="/logo/favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="/logo/favicon.svg">
+    <link rel="apple-touch-icon" href="/logo/apple-touch-icon.png">
+    <link rel="manifest" href="/logo/site.webmanifest">
+    <meta name="theme-color" content="#fafafa">
+    <title>Patrick Lund Haugen | Web developer</title>
+</head>
+<body>
+<div id="root"></div>
+<script type="module" src="/src/main.tsx"></script>
+<script>
+    let docTitle = document.title;
 
-            window.addEventListener("blur", () => {
-                document.title = "Wait, don't leave!";
-            });
+    window.addEventListener("blur", () => {
+        document.title = "Wait, don't leave!";
+    });
 
-            window.addEventListener("focus", () => {
-                document.title = docTitle;
-            });
-        </script>
-    </body>
+    window.addEventListener("focus", () => {
+        document.title = docTitle;
+    });
+</script>
+</body>
 </html>

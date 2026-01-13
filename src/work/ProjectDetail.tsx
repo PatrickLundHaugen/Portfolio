@@ -88,7 +88,7 @@ export default function ProjectDetail() {
     useGSAP(() => {
         gsap.from(".animate-left-col > *", {
             duration: 0.5,
-            x: "-50%",
+            x: -200,
             autoAlpha: 0,
             stagger: 0.05,
             ease: "power4.out",
@@ -96,7 +96,7 @@ export default function ProjectDetail() {
 
         if (container.current) {
             gsap.from(container.current.children, {
-                y: "25%",
+                y: 50,
                 autoAlpha: 0,
                 duration: 0.5,
                 stagger: 0.1,

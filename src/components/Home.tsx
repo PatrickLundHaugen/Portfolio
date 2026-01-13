@@ -11,7 +11,7 @@ export default function Home() {
     useGSAP(() => {
         gsap.from(".animate-left-col > *", {
             duration: 0.5,
-            x: "-50%",
+            x: -150,
             autoAlpha: 0,
             stagger: 0.05,
             ease: "power4.out",
