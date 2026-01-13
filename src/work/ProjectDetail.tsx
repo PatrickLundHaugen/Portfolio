@@ -144,8 +144,9 @@ export default function ProjectDetail() {
                                         <img
                                             src={project.images[0]}
                                             alt={t(`work.projects.${project.id}.title`)}
-                                            loading="lazy"
+                                            loading="eager"
                                             decoding="async"
+                                            fetchPriority="high"
                                             className="w-full aspect-video object-cover transition-transform duration-250 scale-110 group-hover:scale-100"
                                         />
                                     </div>
@@ -174,8 +175,9 @@ export default function ProjectDetail() {
                                                         <div className="overflow-hidden rounded-lg">
                                                             <img
                                                                 src={img}
-                                                                loading="lazy"
+                                                                loading={index === 0 ? "eager" : "lazy"}
                                                                 decoding="async"
+                                                                fetchPriority={index === 0 ? "high" : "auto"}
                                                                 alt={`${t(`work.projects.${project.id}.title`)} - Image ${index + 1}`}
                                                                 className="w-full aspect-video object-cover transition-transform duration-250 scale-110 group-hover:scale-100"
                                                             />
