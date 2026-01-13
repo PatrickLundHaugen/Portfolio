@@ -36,6 +36,7 @@ export default function Button({
     return (
         <Comp
             className={cn("inline-flex items-center justify-center gap-1 whitespace-nowrap rounded-full font-medium tracking-tight cursor-pointer uppercase select-none transition-[color,background-color,border-color,opacity] disabled:pointer-events-none disabled:opacity-50",
+                "[&_svg]:size-[1em] [&_svg]:shrink-0",
                 variants[variant],
                 sizes[size],
                 className)}

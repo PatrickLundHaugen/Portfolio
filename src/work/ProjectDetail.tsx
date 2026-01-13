@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import Autoplay from "embla-carousel-autoplay";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
-import { RiArrowRightUpLine, RiFullscreenLine, RiCloseLine } from "react-icons/ri";
+import { ArrowUpRight, Maximize, X } from "lucide-react";
 
 import {
     Carousel,
@@ -138,7 +138,7 @@ export default function ProjectDetail() {
                                 <Button asChild variant="link" size="link">
                                     <a href={project.productUrl} target="_blank" rel="noreferrer">
                                         {t(`work.projects.${project.id}.links.product`)}
-                                        <RiArrowRightUpLine />
+                                        <ArrowUpRight />
                                     </a>
                                 </Button>
                             )}
@@ -146,7 +146,7 @@ export default function ProjectDetail() {
                                 <Button asChild variant="link" size="link">
                                     <a href={project.githubUrl} target="_blank" rel="noreferrer">
                                         {t(`work.projects.${project.id}.links.github`)}
-                                        <RiArrowRightUpLine />
+                                        <ArrowUpRight />
                                     </a>
                                 </Button>
                             )}
@@ -164,7 +164,7 @@ export default function ProjectDetail() {
                                         className="absolute top-3 right-3 z-10"
                                         aria-label="View Fullscreen"
                                     >
-                                        <RiFullscreenLine />
+                                        <Maximize />
                                     </Button>
                                     <div className="overflow-hidden rounded-lg">
                                         <img
@@ -186,7 +186,7 @@ export default function ProjectDetail() {
                                             className="absolute top-3 right-3 z-10"
                                             aria-label="View Fullscreen"
                                         >
-                                            <RiFullscreenLine />
+                                            <Maximize />
                                         </Button>
 
                                         <Carousel
@@ -264,7 +264,7 @@ export default function ProjectDetail() {
                         onClick={closeFullscreen}
                         aria-label="Close Fullscreen"
                     >
-                        <RiCloseLine className="size-6" />
+                        <X className="size-6" />
                     </Button>
 
                     <div

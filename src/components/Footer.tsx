@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
-import { RiArrowRightUpLine } from "react-icons/ri";
 
 import Button from "@/components/ui/Button";
+import { ArrowUpRight } from "lucide-react";
 
 export default function Footer() {
     const { t } = useTranslation();
@@ -11,13 +11,13 @@ export default function Footer() {
             <Button asChild variant="link" size="link">
                 <a href="https://www.linkedin.com/in/patrick-lund-haugen-6776092ab/" target="_blank" rel="noopener noreferrer">
                     {t("footer.linkedin")}
-                    <RiArrowRightUpLine />
+                    <ArrowUpRight />
                 </a>
             </Button>
             <Button asChild variant="link" size="link">
                 <a href="https://github.com/PatrickLundHaugen" target="_blank" rel="noopener noreferrer">
                     {t("footer.github")}
-                    <RiArrowRightUpLine />
+                    <ArrowUpRight />
                 </a>
             </Button>
         </footer>

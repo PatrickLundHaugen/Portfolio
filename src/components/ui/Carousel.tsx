@@ -2,7 +2,7 @@
 
 import React from "react"
 import useEmblaCarousel, { type UseEmblaCarouselType } from "embla-carousel-react"
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 import cn from "@/lib/utils"
 import Button from "@/components/ui/Button"
@@ -97,7 +97,7 @@ export function CarouselPrevious({ className, ...props }: React.ComponentProps<t
             className={cn("absolute top-1/2 left-6 -translate-y-1/2", className)}
             {...props}
         >
-            <IoIosArrowBack className="size-6" />
+            <ChevronLeft className="size-6" />
             <span className="sr-only">Previous slide</span>
         </Button>
     )
@@ -114,7 +114,7 @@ export function CarouselNext({ className, ...props }: React.ComponentProps<typeo
             className={cn("absolute top-1/2 right-6 -translate-y-1/2", className)}
             {...props}
         >
-            <IoIosArrowForward className="size-6" />
+            <ChevronRight className="size-6" />
             <span className="sr-only">Next slide</span>
         </Button>
     )

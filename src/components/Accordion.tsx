@@ -1,8 +1,7 @@
 import { ReactNode, useState, useId, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { IoIosArrowDown } from "react-icons/io";
-import { RiArrowRightUpLine } from "react-icons/ri";
+import { ChevronDown, ArrowUpRight } from "lucide-react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 
@@ -33,7 +32,7 @@ function AccordionItem({ title, year, content, isOpen, onClick }: ItemProps) {
                     <span className="md:text-lg font-semibold group-hover:underline animate-title-text">{title}</span>
                     <span className="text-xs md:text-sm text-neutral-500">{year}</span>
                 </div>
-                <IoIosArrowDown
+                <ChevronDown
                     className={`size-4 transition-transform ${
                         isOpen ? "rotate-180" : "rotate-0"
                     }`}
@@ -107,7 +106,7 @@ export default function Accordion() {
                                         <Button asChild variant="link" size="link">
                                             <a href={project.productUrl} target="_blank" rel="noreferrer">
                                                 {t(`work.projects.${project.id}.links.product`)}
-                                                <RiArrowRightUpLine />
+                                                <ArrowUpRight />
                                             </a>
                                         </Button>
                                     )}
@@ -115,7 +114,7 @@ export default function Accordion() {
                                         <Button asChild variant="link" size="link">
                                             <a href={project.githubUrl} target="_blank" rel="noreferrer">
                                                 {t(`work.projects.${project.id}.links.github`)}
-                                                <RiArrowRightUpLine />
+                                                <ArrowUpRight />
                                             </a>
                                         </Button>
                                     )}
