@@ -1,22 +1,10 @@
 import { useTranslation } from "react-i18next";
-import { gsap } from "gsap";
-import { useGSAP } from "@gsap/react";
 
 import Accordion from "@/components/Accordion";
 import Footer from "@/components/Footer";
 
 export default function Home() {
     const { t } = useTranslation();
-
-    useGSAP(() => {
-        gsap.from(".animate-left-col > *", {
-            duration: 0.5,
-            x: -150,
-            autoAlpha: 0,
-            stagger: 0.05,
-            ease: "power4.out",
-        });
-    });
 
     return (
         <section className="h-full flex flex-col justify-end md:grid md:grid-cols-2 md:items-end gap-8 lg:gap-32">

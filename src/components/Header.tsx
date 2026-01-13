@@ -17,17 +17,6 @@ export default function Header() {
     const animation = useRef<gsap.core.Tween | null>(null);
 
     useGSAP(() => {
-        if (!scope.current) return;
-
-        gsap.from(scope.current, {
-            y: -48,
-            autoAlpha: 0,
-            duration: 0.5,
-            ease: "power4.out",
-        });
-    }, { scope });
-
-    useGSAP(() => {
         const split = new SplitText(".contact-text-rotation", {
             type: "chars"
         });
@@ -46,7 +35,7 @@ export default function Header() {
     };
 
     return (
-        <header ref={scope} className="inline-flex flex-wrap justify-between">
+        <header ref={scope} className="animate-header inline-flex flex-wrap justify-between">
             <Link to="/" aria-label="Home">
                 <Logo className="size-12 text-primary shrink-0" />
             </Link>
