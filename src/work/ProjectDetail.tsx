@@ -1,9 +1,7 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import Autoplay from "embla-carousel-autoplay";
-import { gsap } from "gsap";
-import { useGSAP } from "@gsap/react";
 import { ArrowUpRight, Maximize, X } from "lucide-react";
 
 import {
@@ -32,9 +30,6 @@ export default function ProjectDetail() {
     const [selectedIndex, setSelectedIndex] = useState(0);
     const [dialogApi, setDialogApi] = useState<CarouselApi>();
     const [dialogCurrent, setDialogCurrent] = useState(0);
-
-    const main = useRef<HTMLElement>(null);
-    const container = useRef<HTMLDivElement>(null);
 
     const openFullscreen = useCallback(() => {
         setSelectedIndex(current - 1);
@@ -85,27 +80,6 @@ export default function ProjectDetail() {
         };
     }, [dialogApi]);
 
-    useGSAP(() => {
-        gsap.from(".animate-left-col > *", {
-            duration: 0.5,
-            x: -200,
-            autoAlpha: 0,
-            stagger: 0.05,
-            ease: "power4.out",
-        });
-
-        if (container.current) {
-            gsap.from(container.current.children, {
-                y: 50,
-                autoAlpha: 0,
-                duration: 0.5,
-                stagger: 0.1,
-                ease: "power4.out",
-                clearProps: "all"
-            });
-        }
-    }, { scope: main });
-
     if (!project) {
         return <NotFound />;
     }
@@ -116,7 +90,7 @@ export default function ProjectDetail() {
     const content = t(`work.projects.${project.id}.content`, { returnObjects: true }) as (string | { type: "heading"; text: string })[];
 
     return (
-        <section ref={main} className="pt-[25vh]">
+        <section className="pt-[25vh]">
             <h1 className="text-3xl lg:text-4xl font-bold tracking-tight uppercase mb-6">
                 {t(`work.projects.${project.id}.title`)}
             </h1>
@@ -235,14 +209,26 @@ export default function ProjectDetail() {
                         {t("work.article")}
                     </p>
 
-                    <div ref={container} className="xl:mr-64">
+                    <div className="animate-content-col xl:mr-64">
                         {content.map((item, index) => {
                             if (typeof item === "string") {
-                                return <p key={index} className="text-base/7 text-neutral-600 my-6">{item}</p>;
+                                return (
+                                    <p
+                                        key={index}
+                                        className="text-base/7 text-neutral-600 my-6"
+                                        style={{ animationDelay: `${index * 100}ms` }}
+                                    >
+                                        {item}
+                                    </p>
+                                );
                             }
                             if (item.type === "heading") {
                                 return (
-                                    <h2 key={index} className="font-medium">
+                                    <h2
+                                        key={index}
+                                        className="font-medium"
+                                        style={{ animationDelay: `${index * 100}ms` }}
+                                    >
                                         {item.text}
                                     </h2>
                                 );

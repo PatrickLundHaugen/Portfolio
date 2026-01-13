@@ -66,6 +66,17 @@
     }
 }
 
+@keyframes fadeInUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
 .animate-header {
     animation: slideInFromTop 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
@@ -79,8 +90,14 @@
 .animate-left-col > *:nth-child(2) { animation-delay: 50ms; }
 .animate-left-col > *:nth-child(3) { animation-delay: 100ms; }
 .animate-left-col > *:nth-child(4) { animation-delay: 150ms; }
+.animate-left-col > *:nth-child(5) { animation-delay: 200ms; }
 
 .animate-title-text {
     animation: slideInFromBottom 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    opacity: 0;
+}
+
+.animate-content-col > * {
+    animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     opacity: 0;
 }
