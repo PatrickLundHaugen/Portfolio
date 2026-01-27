@@ -19,54 +19,43 @@
         "article": "Article",
 
         "projects": {
-            "imageGenerator": {
-                "title": "Image Generator",
-                "date": "June",
-                "year": "2024",
+            "pats-notes": {
+                "title": "Pat's Notes",
+                "date": "October - January",
+                "year": "2026",
                 "links": {
                     "github": "Source Code",
                     "product": "Website"
                 },
                 "content": [
-                    "This was my very first React project! In addition to learning React and TypeScript from scratch, I also used Tailwind and shadcn/ui for the first time.",
-                    "It was also the first time I integrated an API, so it was a lot of new stuff at once. Luckily, I already had some experience from earlier small projects using plain HTML, CSS, and JavaScript, so the transition wasn't as overwhelming as it could have been. Even though the learning curve was steep, it was super fun to see how things started to come together, from component structure and styling to data fetching and dynamic content.",
-                    "The project turned out to be a great introduction to modern tools and how development can be both more efficient and more enjoyable. And of course, it gave me tons of motivation to keep exploring!",
+                    "I've wanted to create a larger app which is more on the technical side, so I built a note-taking app, focusing on three core principles: a performance- and productivity-based editor, automatic version history, and optional AI assistance.",
+                    "The key word here is \"optional\". The app is fully functional without AI. You choose whether to use it or not.",
                     {
                         "type": "heading",
-                        "text": "So how does it work?"
+                        "text": "The app explained"
                     },
-                    "Nothing fancy here, but it works and it looks good. I connected to the Unsplash API (yep, stock photos) and used it to fetch as many images as I wanted. The first image shows as a hero image, while the rest appear in a gallery that scrolls endlessly. It's a simple concept, but it looks pretty cool.",
+                    "Pat's Notes throws away the bloat of modern note-taking apps, keeping a clean interface with some fun features baked in. These features include a block-based editor giving you the usual paragraphs, headings, quotes, code blocks, and so on. Everything is triggered through slash commands, so type \"/\" and pick what you need.",
+                    "I built the editor using the headless framework, TipTap. The slash command menu appears when you type \"/\", filters as you type, navigates with arrow keys, and inserts blocks on Enter. Coordinating these interactions required diving deep into TipTap's extension API. Code blocks use Lowlight for syntax highlighting, supporting JavaScript, Python, TypeScript, SQL, JSON, and more.",
+                    "The AI integration is conveyed through slash commands: \"/improve\" enhances selected text, \"/shorter\" condenses text. \"/longer\" expands text, \"/fix\" corrects grammar and spelling, \"/continue\" generates more text based on context.",
+                    "Each command sends text directly to OpenAI's API from the browser using your key from localStorage. Responses stream in real-time, inserting into the editor as they generate. The key is only kept in localStorage, never transmitted to my server or anywhere else.",
                     {
                         "type": "heading",
-                        "text": "What's next?"
+                        "text": "Backend"
                     },
-                    "The whole project was done in about a week, so the focus was mainly on getting the foundation in place. Afterwards, I started thinking about ways to expand it, perhaps by adding more interactivity, advanced logic, or exploring some new concepts I've learned since. But as usual, other projects and obligations got in the way.",
-                    "Still, I really value what I learned from the experience. The code might feel a bit outdated now, both visually and technically, as there are many things I'd do differently today. I definitely see the potential to revisit it with fresh eyes and improved skills if the motivation strikes. The most important part is that it gave me a solid foundation for diving into modern, efficient web development."
+                    "The backend uses FastAPI and PostgreSQL, hosted on Supabase. Pages can have parent-child relationships, each with a unique slug for clean URLs. Tags attach to pages for filtering.",
+                    "Authentication uses JWT tokens with refresh token rotation. Access tokens expire after 30 minutes, refresh tokens last 7 days, and rotation happens transparently in the background.",
+                    "Every significant change creates a snapshot. Not for every keystroke, but when you've changed the text enough to warrant a new version. The system tracks about 50 versions per page, automatically cleaning up the oldest. The backend keeps track of the title, content, timestamp, and version number, while the frontend shows a history panel where you can preview any version and restore it. You may also compare two versions, highlighting changes in the text with additions in green and deletions in red.",
+                    "Pat's Notes works offline as a PWA. I used IndexedDB through Dexie.js to store notes locally. When you edit, it immediately saves to IndexedDB. If online, it syncs to the server. If offline, it queues changes and syncs when connection returns. The sync queue handles multiple edits while offline, syncing them in order when you're back online.",
+                    {
+                        "type": "heading",
+                        "text": "The learning experience and the future ahead"
+                    },
+                    "Editor development is complex. In fact, note apps can be hard to design and develop. Building with an editor framework such as TipTap, it presents edge cases which you might've never thought about. What happens when you delete the last character in a heading? How do you handle pasted formatted text? What if someone hits undo during AI generation?",
+                    "Version history requires careful strategy. When do you create a version, and what's the balance between saving too often and missing important changes? Offline-first architecture demands similar consideration. You can't just add localStorage and call it done. You need to define the source of truth, handle conflict resolution, and account for sync failures. AI integration, surprisingly, is mostly UX. It comes down to prompt engineering and deciding when to show loading states, handle errors, and allow cancellation.",
+                    "The core is nailed. But we can improve, enriching the app with better search using PostgreSQL full-text search, rich link embeds, export to Markdown/PDF, and a mobile-optimized interface.",
+                    "By adding such features, we eventually get a fully fleshed-out app. But at what point does it become too much?"
                 ]
             },
-
-            "dashboard": {
-                "title": "Dashboard",
-                "date": "February - May",
-                "year": "2025",
-                "links": {
-                    "github": "Source Code",
-                    "product": "Website"
-                },
-                "content": [
-                    "Dashboard is a project I've been working on intermittently over the past few months. It functions as a personal control panel that brings together useful tools in one place. The idea was to create something genuinely helpful for my daily life, rather than just a technical showcase I wouldn't end up using. So far, I've implemented several features, including a chat tool integrated with Gemini, a bookmarking system, and a simple notepad.",
-                    {
-                        "type": "heading",
-                        "text": "The technical"
-                    },
-                    "Most of the technical parts were familiar territory. I used Tailwind and shadcn/ui, which I've worked with in earlier projects, so that stayed consistent. As mentioned above, I integrated Gemini. That was a fairly straightforward process, since the API works similarly to many others. I chose Gemini over ChatGPT mainly because it's free and, in many cases, a better option.",
-                    "Another important, but less visible part of the project is the flexible layout. I used dnd-kit, a library for drag-and-drop functionality, which lets users rearrange and resize the cards on the page however they like.",
-                    "For data storage, I've currently opted for localStorage. It's simple and works well enough to keep user data between sessions. A database would of course provide more robust storage, but for this stage of the project, localStorage is more than sufficient. That's something I could build on later if the need arises.",
-                    "I've paused development for now due to other commitments, but I absolutely plan to keep working on Dashboard regularly. There are endless possibilities for improvements, both small tweaks and larger additions.",
-                    "Maybe I'll publish it eventually, we'll see :)"
-                ]
-            },
-
             "watchd": {
                 "title": "Watchd",
                 "date": "June - September",
@@ -93,6 +82,52 @@
                         "text": "Future plans"
                     },
                     "I'm still actively working on this project and will continue until I feel it's truly complete. TMDB offers an incredible number of endpoints, so there will always be something cool to add. I also plan to update the site whenever it makes sense, hopefully sometime soon."
+                ]
+            },
+            "dashboard": {
+                "title": "Dashboard",
+                "date": "February - May",
+                "year": "2025",
+                "links": {
+                    "github": "Source Code",
+                    "product": "Website"
+                },
+                "content": [
+                    "Dashboard is a project I've been working on intermittently over the past few months. It functions as a personal control panel that brings together useful tools in one place. The idea was to create something genuinely helpful for my daily life, rather than just a technical showcase I wouldn't end up using. So far, I've implemented several features, including a chat tool integrated with Gemini, a bookmarking system, and a simple notepad.",
+                    {
+                        "type": "heading",
+                        "text": "The technical"
+                    },
+                    "Most of the technical parts were familiar territory. I used Tailwind and shadcn/ui, which I've worked with in earlier projects, so that stayed consistent. As mentioned above, I integrated Gemini. That was a fairly straightforward process, since the API works similarly to many others. I chose Gemini over ChatGPT mainly because it's free and, in many cases, a better option.",
+                    "Another important, but less visible part of the project is the flexible layout. I used dnd-kit, a library for drag-and-drop functionality, which lets users rearrange and resize the cards on the page however they like.",
+                    "For data storage, I've currently opted for localStorage. It's simple and works well enough to keep user data between sessions. A database would of course provide more robust storage, but for this stage of the project, localStorage is more than sufficient. That's something I could build on later if the need arises.",
+                    "I've paused development for now due to other commitments, but I absolutely plan to keep working on Dashboard regularly. There are endless possibilities for improvements, both small tweaks and larger additions.",
+                    "Maybe I'll publish it eventually, we'll see :)"
+                ]
+            },
+            "image-generator": {
+                "title": "Image Generator",
+                "date": "June",
+                "year": "2024",
+                "links": {
+                    "github": "Source Code",
+                    "product": "Website"
+                },
+                "content": [
+                    "This was my very first React project! In addition to learning React and TypeScript from scratch, I also used Tailwind and shadcn/ui for the first time.",
+                    "It was also the first time I integrated an API, so it was a lot of new stuff at once. Luckily, I already had some experience from earlier small projects using plain HTML, CSS, and JavaScript, so the transition wasn't as overwhelming as it could have been. Even though the learning curve was steep, it was super fun to see how things started to come together, from component structure and styling to data fetching and dynamic content.",
+                    "The project turned out to be a great introduction to modern tools and how development can be both more efficient and more enjoyable. And of course, it gave me tons of motivation to keep exploring!",
+                    {
+                        "type": "heading",
+                        "text": "So how does it work?"
+                    },
+                    "Nothing fancy here, but it works and it looks good. I connected to the Unsplash API (yep, stock photos) and used it to fetch as many images as I wanted. The first image shows as a hero image, while the rest appear in a gallery that scrolls endlessly. It's a simple concept, but it looks pretty cool.",
+                    {
+                        "type": "heading",
+                        "text": "What's next?"
+                    },
+                    "The whole project was done in about a week, so the focus was mainly on getting the foundation in place. Afterwards, I started thinking about ways to expand it, perhaps by adding more interactivity, advanced logic, or exploring some new concepts I've learned since. But as usual, other projects and obligations got in the way.",
+                    "Still, I really value what I learned from the experience. The code might feel a bit outdated now, both visually and technically, as there are many things I'd do differently today. I definitely see the potential to revisit it with fresh eyes and improved skills if the motivation strikes. The most important part is that it gave me a solid foundation for diving into modern, efficient web development."
                 ]
             }
         }

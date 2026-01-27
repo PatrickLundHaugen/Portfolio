@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { ChevronDown, ArrowUpRight } from "lucide-react";
 
-import { projects } from "@/work/projectsData";
+import { projects } from "@/work/projectsData.ts";
 import Button from "@/components/ui/Button";
 
 interface ItemProps {

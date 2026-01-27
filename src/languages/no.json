@@ -19,54 +19,43 @@
         "article": "Artikkel",
 
         "projects": {
-            "imageGenerator": {
-                "title": "Image Generator",
-                "date": "Juni",
-                "year": "2024",
+            "pats-notes": {
+                "title": "Pat's Notes",
+                "date": "October - January",
+                "year": "2026",
                 "links": {
-                    "github": "Kode",
-                    "product": "Nettside"
+                    "github": "Source Code",
+                    "product": "Website"
                 },
                 "content": [
-                    "Dette var mitt aller første prosjekt i React! I tillegg til å lære React og Typescript fra bunnen av, tok jeg også i bruk både Tailwind og shadcn/ui for første gang.",
-                    "Jeg integrerte også mitt første API, så det ble mye nytt på en gang. Heldigvis hadde jeg allerede en del erfaring fra tidligere småprosjekter hvor jeg brukte vanlig HTML, CSS, og JavaScript, så overgangen føltes ikke så overveldende som den kanskje kunne gjort. Selv om det var en litt bratt læringskurve, var det veldig gøy å se hvordan ting begynte å henge sammen, alt fra komponentstruktur og styling ved datahenting og dynamisk innhold.",
-                    "Prosjektet ble en fin introduksjon til nye moderne verktøy, og hvordan utvikling kan være både mer effektiv og mer morsom. Og så klart ga det meg masse motivasjon til å utforske videre!",
+                    "Jeg har ønsket å lage en større app som er mer på den tekniske siden, så jeg bygde en notatapp, med fokus på tre kjerneprinsipp: en ytelsesbasert og produktivitetsrettet editor, automatisk versjonshistorikk, og valgfri AI-assistanse.",
+                    "Nøkkelordet her er \"valgfri\". Appen er fullt funksjonell uten AI. Du velger selv om du vil bruke det eller ikke.",
                     {
                         "type": "heading",
-                        "text": "Så hvordan funker det?"
+                        "text": "Appen forklart"
                     },
-                    "Det er ikke noe fancy greier her, men det funker og det ser bra ut. Jeg koblet til Unsplash sitt API (ja, det er stock photos), og bruker det til å hente inn så mange bilder jeg ønsker samtidig. Det første bildet virker som et Hero image, mens resten ruller nedover i ett galleri som aldri tar slutt. Det er et enkelt konsept, men det ser ganske kult ut.",
+                    "Pat's Notes kaster bort unødvendigheten fra moderne notatapper, og holder et rent grensesnitt med noen morsomme funksjoner innebygd. Disse funksjonene inkluderer en blokkbasert editor som gir deg de vanlige avsnittene, overskriftene, sitater, kodeblokker, og så videre. Alt utløses gjennom skråstrekkommandoer, så skriv \"/\" og velg det du trenger.",
+                    "Jeg bygde editoren ved hjelp av det headless-rammeverket TipTap. Skråstrekkommando-menyen dukker opp når du skriver \"/\", filtrerer mens du skriver, navigerer med piltaster, og setter inn blokker når du trykker Enter. Å koordinere disse interaksjonene krevde dypdykk i TipTaps extension API. Kodeblokker bruker Lowlight for syntaksutheving, med støtte for JavaScript, Python, TypeScript, SQL, JSON, og mer.",
+                    "AI-integrasjonen formidles gjennom skråstrekkommandoer: \"/improve\" forbedrer valgt tekst, \"/shorter\" kondenserer tekst, \"/longer\" utvider tekst, \"/fix\" retter grammatikk og stavefeil, \"/continue\" genererer mer tekst basert på kontekst.",
+                    "Hver kommando sender tekst direkte til OpenAIs API fra nettleseren ved å bruke nøkkelen din fra localStorage. Responser streames i sanntid, og settes inn i editoren mens de genereres. Nøkkelen lagres kun i localStorage, og sendes aldri til serveren min eller andre steder.",
                     {
                         "type": "heading",
-                        "text": "Veien videre"
+                        "text": "Backend"
                     },
-                    "Hele prosjektet ble unnagjort på cirka en uke, så det ble mest fokus på å få grunnlaget på plass. I etterkant har jeg grubla over hvordan jeg kunne bygget videre på det, kanskje ved å involvere mer interaktivitet, avansert logikk, eller utforsket nye konseper jeg har lært siden. Men som oftest, har andre prosjekter og forpliktelser kommet i veien.",
-                    "Likevel ser jeg verdien i det jeg erfarte. Koden kan nok føles litt utdatert, både visuelt og teknisk, da jeg ville gjort mye annerledes nå. Jeg ser potensiale i å plukke det opp igjen med friske øyne og nye ferdigheter, skulle motivasjonen være der. Det viktigste er det solide grunnlaget som prosjektet ga meg slik at jeg kan bygge videre på det, særlig da det ble veien min inn til moderne og effektiv webutvikling."
+                    "Backend-en bruker FastAPI og PostgreSQL, hostet på Supabase. Sider kan ha forelder-barn-relasjoner, hver med en unik slug for rene URLer. Tagger knyttes til sider for filtrering.",
+                    "Autentisering bruker JWT-tokens med refresh token-rotasjon. Access tokens utløper etter 30 minutter, refresh tokens varer i 7 dager, og rotasjon skjer transparent i bakgrunnen.",
+                    "Hver betydelige endring lager et snapshot. Ikke for hvert tastetrykk, men når du har endret teksten nok til å berettige en ny versjon. Systemet sporer rundt 50 versjoner per side, og rydder automatisk opp i de eldste. Backend-en holder styr på tittel, innhold, tidsstempel og versjonsnummer, mens frontend-en viser et historikkpanel hvor du kan forhåndsvise enhver versjon og gjenopprette den. Du kan også sammenligne to versjoner, med endringer i teksten uthevet med tillegg i grønt og slettinger i rødt.",
+                    "Pat's Notes fungerer offline som en PWA. Jeg brukte IndexedDB gjennom Dexie.js for å lagre notater lokalt. Når du redigerer, lagres det umiddelbart til IndexedDB. Hvis du er online, synkroniseres det til serveren. Hvis offline, settes endringer i kø og synkroniseres når forbindelsen kommer tilbake. Synkroniseringskøen håndterer flere redigeringer mens du er offline, og synkroniserer dem i rekkefølge når du er tilbake online.",
+                    {
+                        "type": "heading",
+                        "text": "Læringserfaringen og veien videre"
+                    },
+                    "Editorutvikling er komplekst. Faktisk kan notatapper være vanskelige å designe og utvikle. Når man bygger med et editorrammeverk som TipTap, dukker det opp edge cases som du kanskje aldri har tenkt på. Hva skjer når du sletter det siste tegnet i en overskrift? Hvordan håndterer du innlimt formatert tekst? Hva hvis noen trykker angre under AI-generering?",
+                    "Versjonshistorikk krever nøye strategi. Når lager du en versjon, og hva er balansen mellom å lagre for ofte og å gå glipp av viktige endringer? Offline-first-arkitektur krever liknende overveielser. Du kan ikke bare legge til localStorage og kalle det ferdig. Du må definere sannhetskilden, håndtere konfliktløsning, og ta høyde for synkroniseringsfeil. AI-integrasjon er overraskende nok mest UX. Det kommer ned til prompt engineering og å bestemme når man skal vise lastestatus, håndtere feil, og tillate avbrytelse.",
+                    "Kjernen er på plass. Men vi kan forbedre, og berike appen med bedre søk ved hjelp av PostgreSQLs fulltekstsøk, rike lenkeinnbygg, eksport til Markdown/PDF, og et mobiloptimalisert grensesnitt.",
+                    "Ved å legge til slike funksjoner får vi til slutt en fullstendig utviklet app. Men på hvilket tidspunkt blir det for mye?"
                 ]
             },
-
-            "dashboard": {
-                "title": "Dashboard",
-                "date": "Februar - Mai",
-                "year": "2025",
-                "links": {
-                    "github": "Kode",
-                    "product": "Nettside"
-                },
-                "content": [
-                    "Dashboard er et prosjekt jeg har drevet på med litt av og på de siste månedene, og fungerer som et personlig kontrollpanel som samler nyttige funksjoner på ett sted. Tanken var å utvikle ett verktøy som var nyttig i hverdagen min, istedenfor et teknisk prosjekt jeg ikke ville bruke. Foreløpig har jeg implementert en rekke funksjoner, blant annet en chat-funksjon integrert med Gemini, et system for bokmerker, og en enkel notisblokk.",
-                    {
-                        "type": "heading",
-                        "text": "Det tekniske"
-                    },
-                    "Så mye av det tekniske var jeg allerede kjent med. Jeg brukte Tailwind og shadcn/ui som jeg allerede har brukt i tidligere prosjekter og derfor forblir det samme. Som nevnt over, integrerte jeg Gemini. Det var en ganske straightforward prosess, ettersom API-et fungerer ganske likt mange andre. Jeg valgte Gemini fremfor ChatGPT, hovedsakelig fordi det er gratis ,og kan i mange tilfeller være et bedre alternativ.",
-                    "En annen viktig (men lite synlig) del av prosjektet er den fleksible layouten. Her har jeg brukt dnd-kit, et bibliotek for drag-&-drop-funksjonalitet, som lar brukeren flytte og tilpasse kortene på siden slik de selv vil, både i størrelse og plassering.",
-                    "Når det gjelder datalagring, har jeg foreløpig valgt å bruke localStorage. Det er enkelt og fungerer greit nok slik at brukerens data blir lagret mellom økter. En database ville selvsagt gitt mer robust lagring, men for dette stadiet i prosjektet holder det i massevis. Dette er uansett noe jeg kan bygge videre på senere, hvis det er behov.",
-                    "Jeg har satt utviklingen på pause foreløpig grunnet andre forpliktelser, men planen er absolutt å fortsette å jobbe med Dashboard jevnlig. Det finnes uendelige muligheter for utvikling, både små forbedringer og større utvidelser.",
-                    "Kanskje jeg publiserer den etter hvert, vi får se :)"
-                ]
-            },
-
             "watchd": {
                 "title": "Watchd",
                 "date": "Juni - September",
@@ -93,6 +82,52 @@
                         "text": "Fremtidige planer"
                     },
                     "Jeg fortsetter med dette prosjektet fremdeles og vil gjøre det til jeg føler meg ferdig. TMDB tibyr utrolig mange forskjellige endepunkter så det vil alltid være noe kult å legge til. Jeg vil også prøve å oppdatere denne siden når det passer, forhåpentligvis om ikke så lenge."
+                ]
+            },
+            "dashboard": {
+                "title": "Dashboard",
+                "date": "Februar - Mai",
+                "year": "2025",
+                "links": {
+                    "github": "Kode",
+                    "product": "Nettside"
+                },
+                "content": [
+                    "Dashboard er et prosjekt jeg har drevet på med litt av og på de siste månedene, og fungerer som et personlig kontrollpanel som samler nyttige funksjoner på ett sted. Tanken var å utvikle ett verktøy som var nyttig i hverdagen min, istedenfor et teknisk prosjekt jeg ikke ville bruke. Foreløpig har jeg implementert en rekke funksjoner, blant annet en chat-funksjon integrert med Gemini, et system for bokmerker, og en enkel notisblokk.",
+                    {
+                        "type": "heading",
+                        "text": "Det tekniske"
+                    },
+                    "Så mye av det tekniske var jeg allerede kjent med. Jeg brukte Tailwind og shadcn/ui som jeg allerede har brukt i tidligere prosjekter og derfor forblir det samme. Som nevnt over, integrerte jeg Gemini. Det var en ganske straightforward prosess, ettersom API-et fungerer ganske likt mange andre. Jeg valgte Gemini fremfor ChatGPT, hovedsakelig fordi det er gratis ,og kan i mange tilfeller være et bedre alternativ.",
+                    "En annen viktig (men lite synlig) del av prosjektet er den fleksible layouten. Her har jeg brukt dnd-kit, et bibliotek for drag-&-drop-funksjonalitet, som lar brukeren flytte og tilpasse kortene på siden slik de selv vil, både i størrelse og plassering.",
+                    "Når det gjelder datalagring, har jeg foreløpig valgt å bruke localStorage. Det er enkelt og fungerer greit nok slik at brukerens data blir lagret mellom økter. En database ville selvsagt gitt mer robust lagring, men for dette stadiet i prosjektet holder det i massevis. Dette er uansett noe jeg kan bygge videre på senere, hvis det er behov.",
+                    "Jeg har satt utviklingen på pause foreløpig grunnet andre forpliktelser, men planen er absolutt å fortsette å jobbe med Dashboard jevnlig. Det finnes uendelige muligheter for utvikling, både små forbedringer og større utvidelser.",
+                    "Kanskje jeg publiserer den etter hvert, vi får se :)"
+                ]
+            },
+            "image-generator": {
+                "title": "Image Generator",
+                "date": "Juni",
+                "year": "2024",
+                "links": {
+                    "github": "Kode",
+                    "product": "Nettside"
+                },
+                "content": [
+                    "Dette var mitt aller første prosjekt i React! I tillegg til å lære React og Typescript fra bunnen av, tok jeg også i bruk både Tailwind og shadcn/ui for første gang.",
+                    "Jeg integrerte også mitt første API, så det ble mye nytt på en gang. Heldigvis hadde jeg allerede en del erfaring fra tidligere småprosjekter hvor jeg brukte vanlig HTML, CSS, og JavaScript, så overgangen føltes ikke så overveldende som den kanskje kunne gjort. Selv om det var en litt bratt læringskurve, var det veldig gøy å se hvordan ting begynte å henge sammen, alt fra komponentstruktur og styling ved datahenting og dynamisk innhold.",
+                    "Prosjektet ble en fin introduksjon til nye moderne verktøy, og hvordan utvikling kan være både mer effektiv og mer morsom. Og så klart ga det meg masse motivasjon til å utforske videre!",
+                    {
+                        "type": "heading",
+                        "text": "Så hvordan funker det?"
+                    },
+                    "Det er ikke noe fancy greier her, men det funker og det ser bra ut. Jeg koblet til Unsplash sitt API (ja, det er stock photos), og bruker det til å hente inn så mange bilder jeg ønsker samtidig. Det første bildet virker som et Hero image, mens resten ruller nedover i ett galleri som aldri tar slutt. Det er et enkelt konsept, men det ser ganske kult ut.",
+                    {
+                        "type": "heading",
+                        "text": "Veien videre"
+                    },
+                    "Hele prosjektet ble unnagjort på cirka en uke, så det ble mest fokus på å få grunnlaget på plass. I etterkant har jeg grubla over hvordan jeg kunne bygget videre på det, kanskje ved å involvere mer interaktivitet, avansert logikk, eller utforsket nye konseper jeg har lært siden. Men som oftest, har andre prosjekter og forpliktelser kommet i veien.",
+                    "Likevel ser jeg verdien i det jeg erfarte. Koden kan nok føles litt utdatert, både visuelt og teknisk, da jeg ville gjort mye annerledes nå. Jeg ser potensiale i å plukke det opp igjen med friske øyne og nye ferdigheter, skulle motivasjonen være der. Det viktigste er det solide grunnlaget som prosjektet ga meg slik at jeg kan bygge videre på det, særlig da det ble veien min inn til moderne og effektiv webutvikling."
                 ]
             }
         }

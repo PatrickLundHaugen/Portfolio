@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 
-import Accordion from "@/components/Accordion";
+import Accordion from "@/components/ui/Accordion";
 import Footer from "@/components/Footer";
 
 export default function Home() {

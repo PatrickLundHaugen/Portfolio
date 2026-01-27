@@ -90,11 +90,11 @@ export default function ProjectDetail() {
 
     return (
         <section className="pt-[25vh]">
-            <h1 className="text-3xl lg:text-4xl font-bold tracking-tight uppercase mb-6">
+            <h1 className="h-fit lg:top-8 lg:sticky text-3xl lg:text-4xl font-bold tracking-tight uppercase mb-6">
                 {t(`work.projects.${project.id}.title`)}
             </h1>
             <div className="flex flex-col lg:grid lg:grid-cols-3 gap-8 lg:gap-16">
-                <div className="h-fit lg:sticky lg:top-10 text-sm animate-left-col">
+                <div className="h-fit lg:sticky lg:top-24 text-sm animate-left-col">
                     <p className="font-medium tracking-tight uppercase border-b mb-3">
                         {t("work.aboutProject")}
                     </p>
