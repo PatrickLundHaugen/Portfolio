@@ -1,5 +1,7 @@
 {
     "header": {
+        "createdBy": "Laget av",
+        "basedIn": "Basert i",
         "contact": "Kontakt"
     },
 
@@ -7,6 +9,7 @@
         "subheading": "Portefølje av",
         "firstName": "Patrick",
         "lastName": "Lund Haugen",
+        "location": "Kløfta",
         "about": "Jeg designer og bygger for web med intensjon, drevet av formål, ytelse, og oppmerksomhet på detalj. Skaper digitale produkter der hver interaksjon og element reflekterer harmonien mellom gjennomtenkt design og presisjon."
     },
 
@@ -17,6 +20,7 @@
         "timeframe": "Tidsramme",
         "links": "Lenker",
         "article": "Artikkel",
+        "seeMore": "Se mer",
 
         "projects": {
             "pats-notes": {

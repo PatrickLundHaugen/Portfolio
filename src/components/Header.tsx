@@ -61,9 +61,17 @@ export default function Header() {
             <Link to="/" aria-label="Home">
                 <Logo className="size-12 text-primary shrink-0" />
             </Link>
+            <div className="hidden md:block text-lg font-medium tracking-tight">
+                <p>{t("header.createdBy")}</p>
+                <p className="text-neutral-500">{t("home.firstName")}</p>
+            </div>
+            <div className="hidden md:block text-lg font-medium tracking-tight">
+                <p>{t("header.basedIn")}</p>
+                <p className="text-neutral-500">{t("home.location")}</p>
+            </div>
             <div className="inline-flex gap-2">
                 <ToggleLanguage />
-                <Button asChild className="text-lg gap-0">
+                <Button asChild className="text-lg gap-0 h-12">
                     <a
                         key={i18n.language}
                         href="mailto:patricklundhaugen@gmail.com"
