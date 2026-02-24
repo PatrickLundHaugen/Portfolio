@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
-import { useParams, Navigate, Link } from "react-router-dom";
+import { useParams, Navigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import Autoplay from "embla-carousel-autoplay";
 import { ArrowUpRight, Maximize, X } from "lucide-react";
@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/Carousel";
 import Button from "@/components/ui/Button";
 import { projects } from "@/work/projectsData";
+import SeeMore from "@/components/SeeMore";
 
 export default function ProjectDetail() {
     const { t } = useTranslation();
@@ -93,11 +94,6 @@ export default function ProjectDetail() {
 
         return { hasMultipleImages, hasSingleImage, content, relatedProjects };
     }, [project, projectId, t]);
-
-    const getProjectDescription = useCallback((projectId: string) => {
-        const content = t(`work.projects.${projectId}.content`, { returnObjects: true }) as (string | { type: "heading"; text: string })[];
-        return typeof content[0] === "string" ? content[0] : "";
-    }, [t]);
 
     if (!project) {
         return <Navigate to="/404" replace />;
@@ -327,35 +323,8 @@ export default function ProjectDetail() {
                     </div>
                 )}
             </section>
-            <section>
-                <p className="text-sm font-medium tracking-tight uppercase border-b mb-3">{t("work.seeMore")}</p>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16 my-6">
-                    {relatedProjects.map((relatedProject) => (
-                        <Link
-                            key={relatedProject.id}
-                            to={relatedProject.to}
-                            className="group lg:flex lg:gap-4 space-y-4"
-                        >
-                            <div className="aspect-video w-full lg:w-1/3 overflow-hidden rounded-md shrink-0">
-                                <img
-                                    src={relatedProject.image}
-                                    alt={t(`work.projects.${relatedProject.id}.title`)}
-                                    loading="lazy"
-                                    className="size-full object-cover transition-transform duration-250 scale-110 hover:scale-100"
-                                />
-                            </div>
-                            <div>
-                                <h2 className="text-lg font-semibold group-hover:underline">
-                                    {t(`work.projects.${relatedProject.id}.title`)}
-                                </h2>
-                                <p className="text-sm text-neutral-600 line-clamp-2 mt-2 lg:w-4/5">
-                                    {getProjectDescription(relatedProject.id)}
-                                </p>
-                            </div>
-                        </Link>
-                    ))}
-                </div>
-            </section>
+
+            <SeeMore projects={relatedProjects} />
         </>
     );
 }

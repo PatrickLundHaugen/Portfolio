@@ -143,7 +143,9 @@
     },
 
     "404": {
-        "title": "404 Siden ikke funnet",
-        "backLink": "Gå tilbake"
+        "status": 404,
+        "error": "Ikke funnet",
+        "message": "Denne siden ser ikke ut til å eksistere",
+        "backLink": "Gå tilbake til hjemmesiden"
     }
 }

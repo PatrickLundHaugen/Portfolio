@@ -32,12 +32,12 @@ export default function App() {
         }
     }, [pathname]);
 
-    const isHome = pathname === "/";
+    const isProjectDetail = pathname.startsWith("/project/");
 
     return (
         <div
             className={`flex flex-col gap-4 p-4 ${
-                isHome ? "h-screen" : "min-h-screen"
+                isProjectDetail ? "min-h-screen" : "h-screen"
             }`}
         >
             <Header />

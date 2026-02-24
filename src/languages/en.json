@@ -143,7 +143,9 @@
     },
 
     "404": {
-        "title": "404 Page not found",
-        "backLink": "Go back"
+        "status": 404,
+        "error": "Not Found",
+        "message": "This page does not seem to exist",
+        "backLink": "Go back to the homepage"
     }
 }
