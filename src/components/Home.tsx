@@ -1,5 +1,6 @@
 import { useTranslation } from "react-i18next";
 
+import VideoPreview from "@/components/VideoPreview";
 import Accordion from "@/components/ui/Accordion";
 import Footer from "@/components/Footer";
 
@@ -7,7 +8,8 @@ export default function Home() {
     const { t } = useTranslation();
 
     return (
-        <section className="h-full flex flex-col justify-end md:grid md:grid-cols-2 md:items-end gap-8 lg:gap-32">
+        <section className="relative h-full flex flex-col justify-end md:grid md:grid-cols-2 md:items-end gap-8 lg:gap-32">
+            <VideoPreview />
             <div className="animate-left-col flex flex-col">
                 <p className="text-xs md:text-sm font-medium tracking-tight uppercase">
                     {t("home.subheading")}
