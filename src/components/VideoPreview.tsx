@@ -83,13 +83,13 @@ export default function VideoPreview() {
         <div
             className={`absolute left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 transition-opacity ${
                 hidden ? "opacity-0" : "opacity-100"
-            } top-[clamp(25%,calc(25%+(100vw-500px)*25%/940px),50%)]`}
+            } top-[clamp(20%,calc(20%+(100vw-500px)*25%/940px),45%)]`}
         >
             <div ref={motionRef} className="transition-transform duration-500 ease-out will-change-transform">
                 <div
                     ref={boxRef}
                     className="relative aspect-video overflow-hidden rounded-xl will-change-transform [transform:translateZ(0)]
-                    w-[clamp(240px,calc(100vw-2rem),36rem)] min-[540px]:w-[clamp(300px,70vw,36rem)]"
+                    w-[clamp(240px,calc(100vw-2rem),36rem)] min-[540px]:w-[clamp(300px,45vw,28rem)] lg:w-[clamp(300px,45vw,36rem)]"
                 >
                     <video
                         src={`https://stream.mux.com/${MUX_PLAYBACK_ID}/highest.mp4`}
