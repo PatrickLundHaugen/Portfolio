@@ -4,6 +4,7 @@ import Lenis from "lenis";
 import "lenis/dist/lenis.css";
 
 import Header from "@/components/Header";
+import VideoPreview from "@/components/VideoPreview";
 
 export default function App() {
     const { pathname } = useLocation();
@@ -40,6 +41,7 @@ export default function App() {
         >
             <Header />
             <main className="flex-1 w-full">
+                <VideoPreview />
                 <Outlet />
             </main>
         </div>

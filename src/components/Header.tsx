@@ -58,7 +58,7 @@ export default function Header() {
 
     return (
         <header ref={scope} className="animate-header inline-flex flex-wrap justify-between">
-            <Link to="/" aria-label="Home">
+            <Link to="/" aria-label="Home" className="self-start">
                 <Logo className="size-12 text-primary shrink-0" />
             </Link>
             <div className="hidden md:block text-lg font-medium tracking-tight">
@@ -69,7 +69,7 @@ export default function Header() {
                 <p>{t("header.basedIn")}</p>
                 <p className="text-neutral-500">{t("home.location")}</p>
             </div>
-            <div className="inline-flex gap-2">
+            <div className="inline-flex gap-2 flex-wrap">
                 <ToggleLanguage />
                 <Button asChild className="text-lg gap-0 h-12">
                     <a

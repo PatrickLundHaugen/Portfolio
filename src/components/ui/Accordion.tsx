@@ -1,4 +1,4 @@
-import { useState, useId, useMemo, memo } from "react";
+import { useState, useEffect, useId, useMemo, memo } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { ChevronDown, ArrowUpRight } from "lucide-react";
@@ -26,18 +26,13 @@ const AccordionItem = memo(({ project, isOpen, onToggle, index }: ItemProps) => 
 
     const renderedContent = useMemo(() => (
         <div className="flex flex-col gap-6">
-            <div className="relative aspect-video w-full max-w-2xl self-center rounded-md overflow-hidden">
+            <div className="aspect-video w-full max-w-2xl self-center rounded-md overflow-hidden">
                 <img
                     src={project.image}
                     alt={t(`work.projects.${project.id}.title`)}
                     loading="lazy"
                     decoding="async"
-                    className={cn(
-                        "absolute inset-0 size-full object-cover z-20 transition-[clip-path,transform,opacity] duration-500 delay-50 ease-[cubic-bezier(0.87,0,0.13,1)]",
-                        isOpen
-                            ? "[clip-path:polygon(0_100%,100%_100%,100%_0,0_0)] translate-y-0 opacity-100"
-                            : "[clip-path:polygon(30%_50%,70%_50%,70%_50%,30%_50%)] -translate-y-4 opacity-0"
-                    )}
+                    className={cn("size-full object-cover", isOpen ? "opacity-100" : "opacity-0")}
                 />
             </div>
             <p className="text-xs md:text-sm line-clamp-2">{description}</p>
@@ -82,7 +77,7 @@ const AccordionItem = memo(({ project, isOpen, onToggle, index }: ItemProps) => 
                     </span>
                     <span className="text-xs md:text-sm text-neutral-500">{t(`work.projects.${project.id}.year`)}</span>
                 </div>
-                <ChevronDown className={cn("size-4 transition-transform duration-300 ease-out", isOpen && "rotate-180")} />
+                <ChevronDown className={cn("size-4 transition-transform duration-250 ease-out", isOpen && "rotate-180")} />
             </button>
             <div
                 id={`content-${id}`}
@@ -104,6 +99,10 @@ AccordionItem.displayName = "AccordionItem";
 
 export default function Accordion() {
     const [openId, setOpenId] = useState<string | null>(null);
+
+    useEffect(() => {
+        window.dispatchEvent(new CustomEvent("accordion:toggle", { detail: { open: openId !== null } }));
+    }, [openId]);
 
     return (
         <div className="border-y divide-y">
