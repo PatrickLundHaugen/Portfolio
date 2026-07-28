@@ -83,7 +83,7 @@ export default function VideoPreview() {
         <div
             className={`absolute left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 transition-opacity ${
                 hidden ? "opacity-0" : "opacity-100"
-            } top-[clamp(20%,calc(20%+(100vw-500px)*25%/940px),45%)]`}
+            } top-[clamp(17%,calc(17%+(100vw-320px)*3%/180px),20%)] min-[500px]:top-[clamp(20%,calc(20%+(100vw-500px)*25%/940px),45%)]`}
         >
             <div ref={motionRef} className="transition-transform duration-500 ease-out will-change-transform">
                 <div
