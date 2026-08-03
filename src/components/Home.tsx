@@ -8,7 +8,7 @@ export default function Home() {
     const { t } = useTranslation();
 
     return (
-        <section className="h-full flex flex-col gap-8">
+        <section className="h-full flex flex-col">
             <div className="flex-1 flex items-center justify-center">
                 <VideoPreview />
             </div>

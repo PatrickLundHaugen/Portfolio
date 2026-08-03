@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import cn from "@/lib/utils.ts";
 
 const EDGE_PADDING = 16;
 const DESKTOP_QUERY = "(min-width: 768px)";
@@ -80,21 +81,30 @@ export default function VideoPreview() {
     }, []);
 
     return (
-        <div className={`mx-auto transition-opacity ${hidden ? "opacity-0" : "opacity-100"}`}>
-            <div ref={motionRef} className="transition-transform duration-500 ease-out will-change-transform">
-                <div
-                    ref={boxRef}
-                    className="relative aspect-video overflow-hidden rounded-xl will-change-transform [transform:translateZ(0)]
-                    w-[clamp(240px,calc(100vw-2rem),36rem)] min-[540px]:w-[clamp(300px,45vw,28rem)] lg:w-[clamp(300px,45vw,36rem)]"
-                >
-                    <video
-                        src={`https://stream.mux.com/${MUX_PLAYBACK_ID}/highest.mp4`}
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                        className="absolute inset-0 w-full h-full object-cover"
-                    />
+        <div
+            className={cn(
+                "grid w-full overflow-hidden transition-[grid-template-rows,opacity] ease-out",
+                hidden
+                    ? "grid-rows-[0fr] opacity-0 duration-0"
+                    : "grid-rows-[1fr] opacity-100 duration-250"
+            )}
+        >
+            <div className="min-h-0 mx-auto">
+                <div ref={motionRef} className="transition-transform duration-500 ease-out will-change-transform">
+                    <div
+                        ref={boxRef}
+                        className="relative aspect-video overflow-hidden rounded-xl will-change-transform [transform:translateZ(0)]
+                        w-[clamp(240px,calc(100vw-2rem),36rem)] min-[540px]:w-[clamp(300px,45vw,28rem)] lg:w-[clamp(300px,45vw,36rem)]"
+                    >
+                        <video
+                            src={`https://stream.mux.com/${MUX_PLAYBACK_ID}/highest.mp4`}
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                            className="absolute inset-0 w-full h-full object-cover"
+                        />
+                    </div>
                 </div>
             </div>
         </div>
