@@ -13,6 +13,7 @@ export default function VideoPreview() {
     const latestXRef = useRef<number | undefined>(undefined);
     const rafRef = useRef<number | null>(null);
     const [hidden, setHidden] = useState(false);
+    const videoRef = useRef<HTMLVideoElement>(null);
 
     useEffect(() => {
         const handleToggle = (e: Event) => {
@@ -79,6 +80,16 @@ export default function VideoPreview() {
             if (rafRef.current) cancelAnimationFrame(rafRef.current);
         };
     }, []);
+
+    useEffect(() => {
+        const video = videoRef.current;
+        if (!video) return;
+        if (hidden) {
+            video.pause();
+        } else {
+            video.play().catch(() => {});
+        }
+    }, [hidden]);
 
     return (
         <div
