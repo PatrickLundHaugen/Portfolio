@@ -85,7 +85,7 @@ export default function VideoPreview() {
             className={cn(
                 "grid w-full overflow-hidden transition-[grid-template-rows,opacity] ease-out",
                 hidden
-                    ? "grid-rows-[0fr] opacity-0 duration-0"
+                    ? "grid-rows-[0fr] opacity-0 duration-0 [content-visibility:hidden]"
                     : "grid-rows-[1fr] opacity-100 duration-250"
             )}
         >
