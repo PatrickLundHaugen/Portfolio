@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import MuxVideo from "@mux/mux-video-react";
 import cn from "@/lib/utils.ts";
 
 const EDGE_PADDING = 16;
@@ -9,12 +8,12 @@ const MUX_PLAYBACK_ID = "I5TltI6BN9klXArbYprWyBxHRSiYj5NoQTbnSpRq01Rk";
 export default function VideoPreview() {
     const motionRef = useRef<HTMLDivElement>(null);
     const boxRef = useRef<HTMLDivElement>(null);
-    const videoRef = useRef<HTMLVideoElement>(null);
     const boxWidthRef = useRef(0);
     const screenWidthRef = useRef(0);
     const latestXRef = useRef<number | undefined>(undefined);
     const rafRef = useRef<number | null>(null);
     const [hidden, setHidden] = useState(false);
+    const videoRef = useRef<HTMLVideoElement>(null);
 
     useEffect(() => {
         const handleToggle = (e: Event) => {
@@ -22,40 +21,6 @@ export default function VideoPreview() {
         };
         window.addEventListener("accordion:toggle", handleToggle);
         return () => window.removeEventListener("accordion:toggle", handleToggle);
-    }, []);
-
-    useEffect(() => {
-        const video = videoRef.current;
-        if (!video) return;
-        if (hidden) {
-            video.pause();
-        } else {
-            video.play().catch(() => {});
-        }
-    }, [hidden]);
-
-    useEffect(() => {
-        const video = videoRef.current;
-        if (!video) return;
-
-        const tryPlay = () => {
-            if (!hidden) video.play().catch(() => {});
-        };
-
-        video.addEventListener("loadedmetadata", tryPlay);
-        tryPlay();
-
-        const events = ["touchstart", "click", "scroll"] as const;
-        const handleFirstInteraction = () => {
-            tryPlay();
-            events.forEach((ev) => window.removeEventListener(ev, handleFirstInteraction));
-        };
-        events.forEach((ev) => window.addEventListener(ev, handleFirstInteraction, { passive: true, once: true }));
-
-        return () => {
-            video.removeEventListener("loadedmetadata", tryPlay);
-            events.forEach((ev) => window.removeEventListener(ev, handleFirstInteraction));
-        };
     }, []);
 
     useEffect(() => {
@@ -116,15 +81,24 @@ export default function VideoPreview() {
         };
     }, []);
 
+    useEffect(() => {
+        const video = videoRef.current;
+        if (!video) return;
+        if (hidden) {
+            video.pause();
+        } else {
+            video.play().catch(() => {});
+        }
+    }, [hidden]);
+
     return (
         <div
             className={cn(
                 "grid w-full overflow-hidden transition-[grid-template-rows,opacity] ease-out",
                 hidden
                     ? "grid-rows-[0fr] opacity-0 duration-0 [content-visibility:hidden]"
-                    : "grid-rows-[1fr] opacity-100 duration-500"
+                    : "grid-rows-[1fr] opacity-100 duration-250"
             )}
-            inert={hidden}
         >
             <div className="min-h-0 mx-auto">
                 <div ref={motionRef} className="transition-transform duration-500 ease-out will-change-transform">
@@ -133,12 +107,10 @@ export default function VideoPreview() {
                         className="relative aspect-video overflow-hidden rounded-xl will-change-transform [transform:translateZ(0)]
                         w-[clamp(240px,calc(100vw-2rem),36rem)] min-[540px]:w-[clamp(300px,45vw,28rem)] lg:w-[clamp(300px,45vw,36rem)]"
                     >
-                        <MuxVideo
+                        <video
                             ref={videoRef}
-                            playbackId={MUX_PLAYBACK_ID}
-                            streamType="on-demand"
+                            src={`https://stream.mux.com/${MUX_PLAYBACK_ID}/highest.mp4`}
                             preload="auto"
-                            maxResolution="720p"
                             autoPlay
                             muted
                             loop
