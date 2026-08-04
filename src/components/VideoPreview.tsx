@@ -13,6 +13,7 @@ export default function VideoPreview() {
     const latestXRef = useRef<number | undefined>(undefined);
     const rafRef = useRef<number | null>(null);
     const [hidden, setHidden] = useState(false);
+    const hiddenRef = useRef(hidden);
     const videoRef = useRef<HTMLVideoElement>(null);
 
     useEffect(() => {
@@ -82,6 +83,7 @@ export default function VideoPreview() {
     }, []);
 
     useEffect(() => {
+        hiddenRef.current = hidden;
         const video = videoRef.current;
         if (!video) return;
         if (hidden) {
@@ -90,6 +92,30 @@ export default function VideoPreview() {
             video.play().catch(() => {});
         }
     }, [hidden]);
+
+    useEffect(() => {
+        const video = videoRef.current;
+        if (!video) return;
+
+        const tryPlay = () => {
+            if (!hiddenRef.current) video.play().catch(() => {});
+        };
+
+        video.addEventListener("loadedmetadata", tryPlay);
+        tryPlay();
+
+        const events = ["touchstart", "click", "scroll"] as const;
+        const handleFirstInteraction = () => {
+            tryPlay();
+            events.forEach((ev) => window.removeEventListener(ev, handleFirstInteraction));
+        };
+        events.forEach((ev) => window.addEventListener(ev, handleFirstInteraction, { passive: true, once: true }));
+
+        return () => {
+            video.removeEventListener("loadedmetadata", tryPlay);
+            events.forEach((ev) => window.removeEventListener(ev, handleFirstInteraction));
+        };
+    }, []);
 
     return (
         <div
