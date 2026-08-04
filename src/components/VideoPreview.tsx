@@ -35,6 +35,30 @@ export default function VideoPreview() {
     }, [hidden]);
 
     useEffect(() => {
+        const video = videoRef.current;
+        if (!video) return;
+
+        const tryPlay = () => {
+            if (!hidden) video.play().catch(() => {});
+        };
+
+        video.addEventListener("loadedmetadata", tryPlay);
+        tryPlay();
+
+        const events = ["touchstart", "click", "scroll"] as const;
+        const handleFirstInteraction = () => {
+            tryPlay();
+            events.forEach((ev) => window.removeEventListener(ev, handleFirstInteraction));
+        };
+        events.forEach((ev) => window.addEventListener(ev, handleFirstInteraction, { passive: true, once: true }));
+
+        return () => {
+            video.removeEventListener("loadedmetadata", tryPlay);
+            events.forEach((ev) => window.removeEventListener(ev, handleFirstInteraction));
+        };
+    }, []);
+
+    useEffect(() => {
         const el = motionRef.current;
         const box = boxRef.current;
         if (!el || !box) return;
@@ -113,6 +137,8 @@ export default function VideoPreview() {
                             ref={videoRef}
                             playbackId={MUX_PLAYBACK_ID}
                             streamType="on-demand"
+                            preload="auto"
+                            maxResolution="720p"
                             autoPlay
                             muted
                             loop
