@@ -33,7 +33,7 @@ export default function SeeMore({ projects }: SeeMoreProps) {
             <p className="text-sm font-medium tracking-tight uppercase border-b mb-3">
                 {t("work.seeMore")}
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16 my-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16 mt-6">
                 {projects.map((project) => (
                     <Link
                         key={project.id}

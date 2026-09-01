@@ -1,33 +1,13 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { Outlet, useLocation } from "react-router-dom";
-import Lenis from "lenis";
-import "lenis/dist/lenis.css";
 
 import Header from "@/components/Header";
 
 export default function App() {
     const { pathname } = useLocation();
-    const lenisRef = useRef<Lenis | null>(null);
 
     useEffect(() => {
-        const lenis = new Lenis({
-            autoRaf: true,
-            duration: 1,
-        });
-
-        lenisRef.current = lenis;
-
-        return () => {
-            lenis.destroy();
-        };
-    }, []);
-
-    useEffect(() => {
-        if (lenisRef.current) {
-            lenisRef.current.scrollTo(0, { immediate: true });
-        } else {
             window.scrollTo(0, 0);
-        }
     }, [pathname]);
 
     const isProjectDetail = pathname.startsWith("/project/");
